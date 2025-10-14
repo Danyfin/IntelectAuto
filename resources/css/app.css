@@ -1,6 +1,7 @@
 *{
     padding: 0;
     margin: 0;
+    background-color: #EEEEEE;
 }
 
 .container{
@@ -8,21 +9,44 @@
     margin: 0 auto;
     width: 100%;
     display: flex;
-    flex-direction: column;
+    margin-top: 26px;
 }
+
+.toolsANDcard {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
 body{
     font-family: "Roboto", sans-serif;
 }
-.header .container{
+.header{
     display: flex;
     align-items: center;
 }
 
-.container-vse{
-    margin: 0 auto;
+/*ПОИСК*/
+.tools{
+    width: 312px;    
 }
 
+
+.tools-title{
+    font-size: 36px;
+    font-weight: 600;
+}
+
+
 /*ТУТ БУДЕТ КАРТОЧКА*/
+.cards{
+    display: flex;
+    margin: 0 auto;
+    max-width: 872px;
+    width: 100%;
+}
+
+
 .foto{
     width: 212px;
     height: 270px;
@@ -36,10 +60,57 @@ body{
     background-color: black;
     margin-top: 16px;
     margin-bottom: 16px;
+}
+
+.description{
     font-weight: 500;
 }
 
 .stock{
     color: #747474;
+    margin: 16px 0 16px 0;
+    font-weight: 400;
 }
 
+.priceAndBasket{
+    display: flex;
+    justify-content: space-between;
+}
+
+.Price{
+    display: flex;
+}
+
+.NewPrice{
+    font-size: 18px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+.OldPrice{
+    font-size: 16px;
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    margin-left: 8px;
+    text-decoration: line-through;
+    color: #7F7F7F;
+}
+.OldPrice{
+    align-items: end;
+}
+
+.Basket{
+
+}
+.Basket button{
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    background-color: #141414;
+    border: 0;
+    cursor: pointer;
+    color: #ffffff;
+}

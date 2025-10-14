@@ -11,8 +11,9 @@
 </head>
 <body>
     <div class="container">
+        <div class="toolsANDcard">
         <div class="tools">
-            <p>ddd</p>
+            <p class="tools-title">Предохранители</p>
         </div>
         <div class="cards">
             <div class="card">
@@ -24,8 +25,20 @@
                 </div>
                 <p class="description">Предохранитель <br> Круглый 40A (36VDC) <br> пласт. (уп. по 50 шт)</p>
                 <p class="stock">в наличии: 10шт</p>
-            </div>
-        </div>    
+                
+                <div class="priceAndBasket">
+                    <div class="Price">
+                        <div class="NewPrice">10 000₽</div>
+                        <div class="OldPrice">15 000₽</div>
+                    </div>
+                    <div class="Basket">
+                        <button>
+                            F
+                        </button>
+                    </div>
+                </div>
+        </div>  
+        </div>  
     </div>
 </body>
 </html>
