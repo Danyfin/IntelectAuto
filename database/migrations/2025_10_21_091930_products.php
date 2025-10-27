@@ -6,44 +6,39 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
-      Schema::table('products', function(Blueprint $table)
-      {
-            $table->renameColumn('дата', 'date');
-            $table->renameColumn('артикул', 'article');
-            $table->renameColumn('название', 'name');
-            $table->renameColumn('бренд', 'brend');
-            $table->renameColumn('категория', 'catigories');
-            $table->renameColumn('фото1', 'photo1');
-            $table->renameColumn('фото2', 'photo2');
-            $table->renameColumn('фото3', 'photo3');
-            $table->renameColumn('видео1', 'video1');
-            $table->renameColumn('видео2', 'video2');
-            $table->renameColumn('видео3', 'video3');
-            $table->renameColumn('описание', 'description');
-            $table->renameColumn('цена РРЦ', 'price_rrc');
-            $table->renameColumn('фасовка', 'packaging');
-            $table->renameColumn('вес', 'weight');
-            $table->renameColumn('длина', 'length');
-            $table->renameColumn('ширина', 'width');
-            $table->renameColumn('высота', 'height');
-            $table->renameColumn('срок годности', 'expiration_date');
-            $table->renameColumn('условия хранения', 'storage_conditions');
-            $table->renameColumn('штрихкод', 'barcode');
-            $table->renameColumn('ТНВЭД', 'hs_code');
-      });
+        Schema::create('products', function (Blueprint $table) {
+            $table->id();
+            $table->date('date');
+            $table->string('article')->unique();
+            $table->string('name');
+            $table->string('brend');
+            $table->string('catigories');
+            $table->string('photol')->nullable();
+            $table->string('photo2')->nullable();
+            $table->string('photo3')->nullable();
+            $table->string('videol')->nullable();
+            $table->string('video2')->nullable();
+            $table->string('video3')->nullable();
+            $table->text('description')->nullable();
+            $table->decimal('price', 10, 2);
+            $table->decimal('RRC', 10, 2)->nullable();
+            $table->string('packaging')->nullable();
+            $table->decimal('weight', 8, 2)->nullable();
+            $table->decimal('length', 8, 2)->nullable();
+            $table->decimal('width', 8, 2)->nullable();
+            $table->decimal('height', 8, 2)->nullable();
+            $table->date('expiration')->nullable();
+            $table->text('storage')->nullable();
+            $table->string('conbarcode')->nullable()->unique();
+            $table->string('CNOFEA')->nullable();
+            $table->timestamps();
+        });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    
-    public function down(): void
+    public function down()
     {
-        //
+        Schema::dropIfExists('products');
     }
 };

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Product extends Model
 {
@@ -16,26 +17,27 @@ class Product extends Model
     protected $fillable = [
         'date',
         'article',
-        'name', 
-        'brand',
-        'category',
-        'photo1',
+        'name',
+        'brend',
+        'catigories',
+        'photol',
         'photo2', 
         'photo3',
-        'video1',
+        'videol',
         'video2',
         'video3',
         'description',
-        'our_price',
+        'price',
+        'RRC',
         'packaging',
         'weight',
         'length',
         'width',
         'height',
-        'expiration_date',
-        'storage_conditions',
-        'barcode',
-        'hs_code',
+        'expiration',
+        'storage',
+        'conbarcode',
+        'CNOFEA'
     ];
 
     /**
@@ -43,5 +45,21 @@ class Product extends Model
      *
      * @var array<string, string>
      */
-   
+    protected $casts = [
+        'date' => 'date',
+        'price' => 'decimal:2',
+        'RRC' => 'decimal:2',
+        'weight' => 'decimal:2',
+        'length' => 'decimal:2',
+        'width' => 'decimal:2',
+        'height' => 'decimal:2',
+        'expiration' => 'date',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+    ];
+
+    /**
+     * Accessors & Mutators
+     */
+    
 }

@@ -1,3 +1,5 @@
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/*.blade.php';
+
 * {
     padding: 0;
     margin: 0;
@@ -16,6 +18,9 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
+
+    /* ДАНЯ: Я ТУТ ДОБАВИЛ */
+    flex-direction: column;
 }
 
 body {
@@ -42,6 +47,20 @@ body {
     margin: 0 auto;
     max-width: 872px;
     width: 100%;
+
+    /* ДАНЯ: Я ТУТ ДОБАВИЛ */
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* ДАНЯ: Я ТУТ ДОБАВИЛ */
+.card {
+    max-width: 210px;
+}
+
+.paginate {
+    display: flex;
+    flex-direction: row;
 }
 
 .foto {

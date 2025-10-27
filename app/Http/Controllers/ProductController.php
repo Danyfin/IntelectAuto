@@ -10,9 +10,10 @@ class ProductController extends Controller
     /**
      * Display a listing of the products.
      */
+
     public function index()
     {
-        $products = Product::all();
+        $products = Product::paginate(8);
         return view('products.index', compact('products'));
     }
 
