@@ -79,9 +79,14 @@
     color: #707070;
     font-size: 12px;
     font-weight: 400; 
-    width: 423px;
+}
+
+.top2 ul {
     display: flex;
-    justify-content: space-between;
+    list-style: none;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
 }
 
 .top2 a{
@@ -106,11 +111,11 @@
 /*ЛИНИЯ РАЗДЕЛЕНИЯ*/
 .line{
     width: 100%;
-    background-color: #E1E1E1; /* исправлен цвет и свойство */
+    background-color: #E1E1E1;
     height: 1px;
-    border: none; /* убираем стандартные границы */
-    margin: 0; /* убираем отступы */
-    padding: 0; /* убираем внутренние отступы */    
+    border: none;
+    margin: 0;
+    padding: 0;    
 }
 /*ЛИНИЯ РАЗДЕЛЕНИЯ*/
 
@@ -118,15 +123,19 @@
     display: flex;
     margin-top: 8px;
     margin-bottom: 12px;
+    align-items: center;
 }
 
-.bottom1 img{
-    margin-left: 112px;
-    margin-right: 80px;
-}
 
+.bottom1{
+    padding-left: 112px;
+    padding-right: 80px;
+    max-width: 352px;
+    width: 100%;
+}
 .bottom2{
     display: flex;
+    align-items: center;
 }
 
 .catalog button {
@@ -139,21 +148,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px; /* расстояние между иконкой и текстом */
+    gap: 8px;
     padding: 0 12px;
+    color: #FFFFFF;
+    font-size: 14px;
+    line-height: 20px;
 }
 
 .catalog button img {
     width: 16px;
     height: 16px;
     display: block;
-}
-
-.catalog button a {
-    font-size: 14px;
-    line-height: 20px;
-    color: #FFFFFF;
-    text-decoration: none;
 }
 
 .search {
@@ -218,63 +223,15 @@
    font-weight: 400;
 }
 
-.info1fot  {
-    width: 140px;
-}
-.info2fot  {
-    width: 150px;
-}
-.info3fot  {
-    width: 150px;
+.info1fot,
+.info2fot,
+.info3fot {
+    min-width: 140px;
+    margin-left: 20px;
 }
 
-
-.info1fot p {
-    font-size: 12px;
-    line-height: 16px;
-    font-weight: 500;
-    margin-bottom: 20px;
-    color: #313131;
-}
-
-.info1fot ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.info1fot a {
-    font-size: 12px;
-    line-height: 16px;
-    font-weight: 400;
-    margin-bottom: 12px;
-    text-decoration: none; 
-    color: #707070;
-}
-
-.info2fot p {
-    font-size: 12px;
-    line-height: 16px;
-    font-weight: 500;
-    margin-bottom: 20px;
-    color: #313131;
-}
-
-.info2fot ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.info2fot a {
-    font-size: 12px;
-    line-height: 16px;
-    font-weight: 400;
-    margin-bottom: 12px;
-    text-decoration: none; 
-    color: #707070;
-}
-
+.info1fot p,
+.info2fot p,
 .info3fot p {
     font-size: 12px;
     line-height: 16px;
@@ -283,19 +240,114 @@
     color: #313131;
 }
 
+.info1fot ul,
+.info2fot ul,
 .info3fot ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
+.info1fot li,
+.info2fot li,
+.info3fot li {
+    margin-bottom: 12px;
+}
+
+.info1fot a,
+.info2fot a,
 .info3fot a {
     font-size: 12px;
     line-height: 16px;
     font-weight: 400;
-    margin-bottom: 12px;
     text-decoration: none; 
     color: #707070;
 }
 
+.max-920-header{
+    display: none;
+}
+.vpz{
+    display: none;
+}
+
 /*КОНЕЦ ФУТЕРА*/
+
+/* Медиа-запрос для экранов до 1100px */
+@media (max-width: 1100px) {
+    .search {
+        width: 300px;
+    }
+    .bottom1{
+    padding-left: 82px;
+    padding-right: 50px;
+    }
+}
+@media (max-width: 920px) {
+    .Headbottom{
+        display: none;
+    }
+    .line{
+        display: none;
+    }
+    .Headtop{
+        display: none;
+    }
+    .max-920-header {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 64px;
+        margin-bottom: 24px;
+    }
+    .main-header_footer {
+        padding: 0 16px;
+    }
+    .container {
+        padding: 0 16px;
+    }
+    .main-header_footer1 {
+        padding: 0 16px;
+    }
+    .tools {
+        display: none;
+    }
+    .bm img{
+        display: flex;
+        margin: 0 auto;
+        width: 24px;
+    }
+    .copyfoot{
+        display: none;
+    }
+    .main-header_footer1 {
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        background-color: #FFFFFF;
+        margin-top: 24px;
+        margin-bottom: 24px;
+    }
+    .leftfot{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+    .socialfot {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    .rightfot{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .vpz{
+        display: flex;
+        margin-top: 20px;
+        font-size: 12px;
+        line-height: 16px;
+        font-weight: 400;
+        text-decoration: none; 
+        color: #707070;
+    }
+}

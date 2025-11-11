@@ -34,11 +34,13 @@
                 </div>
             </div>
             <div class="top2">
-                <a href="">Акции</a>
-                <a href="">О компании</a>
-                <a href="">Доставка</a>
-                <a href="">Адреса</a>
-                <a href="">Контакты</a>
+                <ul>
+                    <li><a href="">Акции</a></li>
+                    <li><a href="">О компании</a></li>
+                    <li><a href="">Доставка</a></li>
+                    <li><a href="">Адреса</a></li>
+                    <li><a href="">Контакты</a></li>
+                </ul>
             </div>
             <div class="top3">
                 <a href="tel:89000000000">8 (900) 000 00 00</a>
@@ -47,19 +49,29 @@
         <div class="line"></div>
         <div class="Headbottom"> <!-- нижняя -->
             <div class="bottom1">
-                <img src="/images/logo.svg" alt="Logo">
+                <a href="/">
+                    <img src="/images/logo.svg" alt="Logo">
+                </a>
             </div>
             <div class="bottom2">
                 <div class="catalog">
                     <button>
                         <img src="/images/toolbar.svg" alt="toolbar">
-                        <a href="">Каталог</a>
+                        Каталог
                     </button>    
                 </div> 
                 <div class="search">
                     <img src="/images/search.svg" alt="search">
                     <input type="text" placeholder="Поиск">
                 </div>
+            </div>
+        </div>
+        <div class="max-920-header">
+            <a href="/">
+                <img src="/images/logo.svg" alt="Logo">
+            </a>
+            <div class="bm">
+                <img src="/images/bm.svg" alt="menu">
             </div>
         </div>
         </header>
@@ -69,7 +81,7 @@
     <div class="container">
         <div class="tools-info"> <!-- Навигация -->
             <a href="">Главная</a> / <a href="">Каталог товаров</a>
-            <p>Каталог товаров</p>
+            <h2>Каталог товаров</h2>
         </div>
         <div class="toolsANDcard">
             <!-- Боковая панель фильтров -->
@@ -130,7 +142,7 @@
                         <div class="foto">
                             <!-- Здесь должно быть изображение товара -->
                         </div>
-                        <p class="description">{{ $product->name }}</p>
+                        <h3 class="description">{{ $product->name }}</h3>
                         <p class="description1">пласт. (уп. по 50 шт)</p>
 
                         <div class="priceAndBasket">
@@ -138,9 +150,7 @@
                                 <div class="NewPrice">908.00 ₽</div>
                                 <div class="OldPrice">15 000 ₽</div>
                             </div>
-                            <button>
-                                <a href="">Купить</a>
-                            </button>
+                            <button>Купить</button>
                         </div>
                     </div>
                     
@@ -157,12 +167,14 @@
         <footer class="main-header_footer1">
             <div class="leftfot">
                 <div class="fotofot">
-                    <img src="/images/logo.svg" alt="Logo">
+                    <a href="/">
+                        <img src="/images/logo.svg" alt="Logo">
+                    </a>
                 </div>
                 <div class="socialfot">
-                    <a href=""><img src="/images/vk.svg" alt="Logo"></a>
-                    <a href=""><img src="/images/email.svg" alt="Logo"></a>
-                    <a href=""><img src="/images/tg.svg" alt="Logo"></a>
+                    <a href="" target="_blank"><img src="/images/vk.svg" alt="Logo"></a>
+                    <a href="" target="_blank"><img src="/images/email.svg" alt="Logo"></a>
+                    <a href="" target="_blank"><img src="/images/tg.svg" alt="Logo"></a>
                 </div>
                 <div class="copyfoot">
                     <p>© ООО Интеллект-Авто 2025</p>
@@ -188,9 +200,10 @@
                 <div class="info3fot">
                     <p>Контакты</p>
                     <ul>
-                        <li><a href="#">8 (900) 000 00 00</a></li>
-                        <li><a href="#">email@gmail.com</a></li>
+                        <li><a href="tel:89000000000">8 (900) 000 00 00</a></li>
+                        <li><a href="mailto:email@gmail.com">email@gmail.com</a></li>
                         <li><a href="#">г. Челябинск, ул. Разина, д. 3 офис 908/19</a></li>
+                        <li class="vpz">© ООО Интеллект-Авто 2025</li>
                     </ul>
                 </div>
             </div>
@@ -220,4 +233,3 @@
 </script>
 </body>
 </html>
-
