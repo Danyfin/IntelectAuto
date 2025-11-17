@@ -53,8 +53,7 @@ body {
 
 /*ПОИСК*/
 .tools {
-    min-width: 240px;
-    background-color: aqua;
+    min-width: 200px;
     margin-right: 20px;
 }
 
@@ -138,3 +137,145 @@ body {
     font-size: 14px;
     line-height: 20px;
 }
+
+/* filter */
+ .tools {
+            max-width: 200px;
+            border-radius: 8px;
+            padding: 20px;
+            height: fit-content;
+        }
+
+        .filter-section {
+            margin-bottom: 24px;
+        }
+
+        .filter__subtitle {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 29px;
+            color: #313131;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .filter-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 18px;
+            cursor: pointer;
+        }
+
+        .filter-checkbox {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 1.5px solid #D1D1D1;
+            border-radius: 3px;
+            margin-right: 10px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .filter-checkbox:checked {
+            background-color: #0075B1;
+            border-color: #0075B1;
+        }
+
+        .filter-checkbox:checked::after {
+            content: '✓';
+            position: absolute;
+            color: white;
+            font-size: 12px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .filter-checkbox:checked + .filter-label span:first-child{
+            color: #313131;
+            font-weight: initial;
+        }
+
+        .filter-label {
+            font-size: 14px;
+            color: #313131;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .filter-price {
+            margin-bottom: 24px;
+        }
+
+        .price-inputs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .price-input {
+            flex: 1;
+            padding: 8px 12px;
+            border: 1px solid #F1F1F1;
+            border-radius: 8px;
+            font-size: 14px;
+            width: 75px;
+        }
+
+        .price-input:focus {
+            outline: none;
+            border-color: #0075B1;
+        }
+
+        .price-slider {
+            position: relative;
+            height: 4px;
+            background-color: #929292;
+            border-radius: 1px;
+            margin-bottom: 20px;
+        }
+
+        .price-slider .progress {
+            position: absolute;
+            height: 100%;
+            background-color: #0075B1;
+            border-radius: 2px;
+        }
+
+        .price-slider input {
+            position: absolute;
+            top: -5px;
+            height: 5px;
+            width: 100%;
+            background: none;
+            pointer-events: none;
+            -webkit-appearance: none;
+        }
+
+        .price-slider input[type="range"]::-webkit-slider-thumb {
+            height: 16px;
+            width: 16px;
+            border-radius: 25%;
+            background: #F7F7F7;
+            border: #0075B1 solid 2px;
+            pointer-events: auto;
+            -webkit-appearance: none;
+        }
+
+        .price-slider input[type="range"]::-moz-range-thumb {
+            height: 16px;
+            width: 16px;
+            border-radius: 25%;
+            background: #F7F7F7;
+            border: #0075B1 solid 2px;
+            pointer-events: auto;
+        }
+        .grey{
+            color: #929292;
+        }
+
+
+/* filter */

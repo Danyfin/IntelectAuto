@@ -86,51 +86,93 @@
         <div class="toolsANDcard">
             <!-- Боковая панель фильтров -->
             <div class="tools">
-                <div class="slirerInputs">
-                    <p>Ползунок+инпуты</p>
+                <div class="filter-section">
+                    <div class="filter__subtitle">
+                        <p>Цена</p>
+                        <img class="plus" src="/images/Vector.svg" alt="">
+                    </div>
+                    <div class="price-slider">
+                        <div class="progress" id="price-progress"></div>
+                        <input type="range" min="0" max="10000" value="0" class="range-min" id="range-min">
+                        <input type="range" min="0" max="10000" value="10000" class="range-max" id="range-max">
+                    </div>
+                    <div class="price-inputs">
+                        <input type="number" class="price-input" placeholder="от 0" id="min-price">
+                        <input type="number" class="price-input" placeholder="до 10000" id="max-price">
+                    </div>
                 </div>
-                <div class="manufacturer">
-                    <p>Производитель</p>
-                        <div class="filter-option">
-                            <input type="checkbox" id="manufacturer1" name="manufacturer" value="option1">
-                            <label for="manufacturer1">Option</label>
-                        </div>
-                        <div class="filter-option">
-                            <input type="checkbox" id="manufacturer2" name="manufacturer" value="option2">
-                            <label for="manufacturer2">Option</label>
-                        </div>
-                        <div class="filter-option">
-                            <input type="checkbox" id="manufacturer3" name="manufacturer" value="option3">
-                            <label for="manufacturer3">Option</label>
-                        </div>
-                        <div class="filter-option">
-                            <input type="checkbox" id="manufacturer4" name="manufacturer" value="option4">
-                            <label for="manufacturer4">Option</label>
-                        </div>
-                        
+
+                <div class="filter-section">
+                    <div class="filter__subtitle">
+                        <p>Производитель</p>
+                        <img class="plus" src="/images/Vector.svg" alt="">
+                    </div>
+                    <div class="filter-item">
+                        <input type="checkbox" class="filter-checkbox" id="manufacturer-bmw1">
+                        <label for="manufacturer-bmw1" class="filter-label">
+                            <span class="grey">BMW</span>
+                            <span class="grey">от 1300 р</span>
+                        </label>
+                    </div>
+                    <div class="filter-item">
+                        <input type="checkbox" class="filter-checkbox" id="manufacturer-bmw2">
+                        <label for="manufacturer-bmw2" class="filter-label">
+                            <span class="grey">BMW</span>
+                            <span class="grey">от 1300 р</span>
+                        </label>
+                    </div>
                 </div>
-                <div class="brand">
-                    <p>Бренд</p>
-                        <div class="filter-option">
-                            <input type="checkbox" id="brand1" name="brand" value="option1" checked>
-                            <label for="brand1">Option</label>
-                        </div>
-                        <div class="filter-option">
-                            <input type="checkbox" id="brand2" name="brand" value="option2" checked>
-                            <label for="brand2">Option</label>
-                        </div>
-                        <div class="filter-option">
-                            <input type="checkbox" id="brand3" name="brand" value="option3" checked>
-                            <label for="brand3">Option</label>
-                        </div>
-                        <div class="filter-option">
-                            <input type="checkbox" id="brand4" name="brand" value="option4" checked>
-                            <label for="brand4">Option</label>
-                        </div>
- 
+
+                <div class="filter-section">
+                    <div class="filter__subtitle">
+                        <p>Бренд</p>
+                        <img class="plus" src="/images/Vector.svg" alt="">
+                    </div>
+                    <div class="filter-item">
+                        <input type="checkbox" class="filter-checkbox" id="brand-bmw1">
+                        <label for="brand-bmw1" class="filter-label">
+                            <span class="grey">LAVR</span>
+                            <span class="grey">от 1300 р</span>
+                        </label>
+                    </div>
+                    <div class="filter-item">
+                        <input type="checkbox" class="filter-checkbox" id="brand-bmw2">
+                        <label for="brand-bmw2" class="filter-label">
+                            <span class="grey">bi bi care</span>
+                            <span class="grey">от 1300 р</span>
+                        </label>
+                    </div>
+                    <div class="filter-item">
+                        <input type="checkbox" class="filter-checkbox" id="brand-bmw2">
+                        <label for="brand-bmw2" class="filter-label">
+                            <span class="grey">GEOMETRIA</span>
+                            <span class="grey">от 1300 р</span>
+                        </label>
+                    </div>
+                    <div class="filter-item">
+                        <input type="checkbox" class="filter-checkbox" id="brand-bmw2">
+                        <label for="brand-bmw2" class="filter-label">
+                            <span class="grey">LAVR for home</span>
+                            <span class="grey">от 1300 р</span>
+                        </label>
+                    </div>
+                    <div class="filter-item">
+                        <input type="checkbox" class="filter-checkbox" id="brand-bmw2">
+                        <label for="brand-bmw2" class="filter-label">
+                            <span class="grey">LAVR motoline</span>
+                            <span class="grey">от 1300 р</span>
+                        </label>
+                    </div>
+                    <div class="filter-item">
+                        <input type="checkbox" class="filter-checkbox" id="brand-bmw2">
+                        <label for="brand-bmw2" class="filter-label">
+                            <span class="grey">LAVR HUNT</span>
+                            <span class="grey">от 1300 р</span>
+                        </label>
+                    </div>
                 </div>
             </div>
-            
+
             <!-- Карточки товаров -->
             <div class="cards-wrapper">
                 @foreach ($products as $product)
@@ -213,23 +255,117 @@
 
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-    const cityOptions = document.querySelectorAll('.city-option');
-    const selectedCity = document.querySelector('.selected-city span');
-    
-    cityOptions.forEach(option => {
-        option.addEventListener('click', function() {
-            const city = this.getAttribute('data-city');
-            selectedCity.textContent = city;
+            // Город
+            const cityOptions = document.querySelectorAll('.city-option');
+            const selectedCity = document.querySelector('.selected-city span');
             
-            localStorage.setItem('selectedCity', city);
+            cityOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const city = this.getAttribute('data-city');
+                    selectedCity.textContent = city;
+                    
+                    localStorage.setItem('selectedCity', city);
+                });
+            });
+            
+            const savedCity = localStorage.getItem('selectedCity');
+            if (savedCity) {
+                selectedCity.textContent = savedCity;
+            }
+
+            // Фильтр цены
+            const rangeMin = document.getElementById('range-min');
+            const rangeMax = document.getElementById('range-max');
+            const priceMin = document.getElementById('min-price');
+            const priceMax = document.getElementById('max-price');
+            const progress = document.getElementById('price-progress');
+
+            function updatePriceSlider() {
+                const minVal = parseInt(rangeMin.value);
+                const maxVal = parseInt(rangeMax.value);
+                
+                // Проверяем, чтобы минимальное значение не было больше максимального
+                if (minVal > maxVal) {
+                    rangeMin.value = maxVal;
+                    priceMin.value = maxVal;
+                }
+                
+                // Проверяем, чтобы максимальное значение не было меньше минимального
+                if (maxVal < minVal) {
+                    rangeMax.value = minVal;
+                    priceMax.value = minVal;
+                }
+                
+                // Обновляем поля ввода
+                priceMin.value = rangeMin.value;
+                priceMax.value = rangeMax.value;
+                
+                // Обновляем прогресс-бар (синюю полосу)
+                const minPercent = (minVal / rangeMin.max) * 100;
+                const maxPercent = 100 - (maxVal / rangeMax.max) * 100;
+                
+                progress.style.left = minPercent + "%";
+                progress.style.right = maxPercent + "%";
+            }
+
+            // Обработчики для ползунков
+            rangeMin.addEventListener('input', updatePriceSlider);
+            rangeMax.addEventListener('input', updatePriceSlider);
+
+            // Обработчики для полей ввода с задержкой (чтобы не обновлять на каждый символ)
+            let timeout;
+            priceMin.addEventListener('input', function() {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => {
+                    let value = parseInt(this.value) || 0;
+                    
+                    // Проверяем границы
+                    if (value < 0) value = 0;
+                    if (value > 10000) value = 10000;
+                    
+                    this.value = value;
+                    rangeMin.value = value;
+                    updatePriceSlider();
+                }, 500);
+            });
+
+            priceMax.addEventListener('input', function() {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => {
+                    let value = parseInt(this.value) || 0;
+                    
+                    // Проверяем границы
+                    if (value < 0) value = 0;
+                    if (value > 10000) value = 10000;
+                    
+                    this.value = value;
+                    rangeMax.value = value;
+                    updatePriceSlider();
+                }, 500);
+            });
+
+            // Обработчики для потери фокуса (мгновенное обновление)
+            priceMin.addEventListener('blur', function() {
+                let value = parseInt(this.value) || 0;
+                if (value < 0) value = 0;
+                if (value > 10000) value = 10000;
+                this.value = value;
+                rangeMin.value = value;
+                updatePriceSlider();
+            });
+
+            priceMax.addEventListener('blur', function() {
+                let value = parseInt(this.value) || 0;
+                if (value < 0) value = 0;
+                if (value > 10000) value = 10000;
+                this.value = value;
+                rangeMax.value = value;
+                updatePriceSlider();
+            });
+
+            // Инициализация слайдера
+            updatePriceSlider();
         });
-    });
-    
-    const savedCity = localStorage.getItem('selectedCity');
-    if (savedCity) {
-        selectedCity.textContent = savedCity;
-    }
-});
 </script>
 </body>
 </html>
