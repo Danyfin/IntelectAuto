@@ -176,10 +176,7 @@
             <!-- Карточки товаров -->
             <div class="cards-wrapper">
                 @foreach ($products as $product)
-                    @if ($loop->index % 4 == 0)
-                        <div class="cards-row">
-                    @endif
-                    
+                   
                     <div class="card">
                         <div class="foto">
                             <!-- Здесь должно быть изображение товара -->
@@ -196,9 +193,7 @@
                         </div>
                     </div>
                     
-                    @if ($loop->iteration % 4 == 0 || $loop->last)
-                        </div>
-                    @endif
+                 
                 @endforeach
             </div>
         </div>  
