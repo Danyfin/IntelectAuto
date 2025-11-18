@@ -84,7 +84,7 @@
     <!-- ШАПКА КОНЕЦ -->
 
      <div class="main">
-        <div class="background">
+        
             <div class="main-car">
                 <div class="top-text">
                     <h2 class="text-1">Запчасти для коммерческой техники и спецтехники</h2>
@@ -96,7 +96,7 @@
                     <input class="button-main" type="submit" value="Стать клиентом">
                 </div>
             </div>
-        </div>
+     
         <div class="info-block">
             <div class="block">
                 <div class="text-up">Широкий ассортимент</div>
@@ -251,6 +251,17 @@
                         </div>
                     </div>
                 </form>
+            </div>
+        </div>
+        <div class="news">
+            <div class="p-block1">
+                <div class="p-text"><h2>Новости</h2></div>
+                    <div class="arrows">
+                        <img src="/images/arrowL.svg" alt="">
+                        <img src="/images/line2.svg" alt="">
+                        <img src="/images/arrowR.svg" alt="">
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -3,6 +3,12 @@
     margin: 0;
 }
 
+.main-inside{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
 .main-header_footer {
     width: 1440px;
     margin: 0 auto;
@@ -18,14 +24,13 @@
    background-color: #FFFFFF; 
 }
 /*Главная*/
-.background{
-    max-width: 100%;
-    height: 734px;
-    background-image: url(/public/images/car.svg);
-}
+
 .main-car{
-    margin-left: 4.2%;
+    padding-left: 40px;
     padding-top: 82px;
+    height: 734px;
+    background: url(/public/images/car.svg) no-repeat center;
+    background-size: cover;
 }
 .text-1{
     font-size: 72px;
@@ -61,10 +66,12 @@
 }
 
 .info-block {
+  
   display: flex;
   flex-direction: row;
   align-items: center;
-  max-height: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
   gap: 20px;
   padding: 20px;
   background-color: #f9f9f9; 
@@ -117,15 +124,26 @@
 }
 /*block*/
 .block1{
+    width: 667px;
+    height: 380px;
     background-color: #F1F1F1;
+    
 }
 .block2{
+    width: 240px;
+    height: 380px;
     background-color: #F1F1F1;
+    display: flex;
 }
+
 .block3{
+    width: 433px;
+    height: 185px;
     background-color: #0075B1;
 }
 .block4{
+    width: 433px;
+    height: 185px;
     background-color: #F1F1F1;
     margin-top: 10px;
 }
@@ -137,14 +155,19 @@
 .b3-block{
     display: flex;
 }
+.b1-button{
+    margin-top: 119px;
+}
 
 .b1-percent{
+    margin-top: 40px;
     font-size: 96px;
     color: #0075B1;
 }
 
 /*up*/
 .b1-description-up{
+    margin-top: 61px;
     font-size: 14px;
     color: #707070;
 }
