@@ -93,18 +93,31 @@
   width: 30px; 
   height: auto;
 }
-
+.stocks-inside{
+    max-width: 1360px;
+    margin: 0 auto;
+}
 .stocks{
     background: #FFFFFF;
+  
 }
 .blocks{
     display: flex;
     justify-content: center;
+    gap: 10px;
+    max-height: 667px;
+    height: 100%;
+}
+.block-double{
+    gap: 10px;
+}
+.theme{
+    margin-bottom: 24px;
+    
 }
 /*block*/
 .block1{
     background-color: #F1F1F1;
-    
 }
 .block2{
     background-color: #F1F1F1;
@@ -114,6 +127,7 @@
 }
 .block4{
     background-color: #F1F1F1;
+    margin-top: 10px;
 }
 /*block*/
 
@@ -173,6 +187,7 @@
     text-decoration: none;
     font-size: 14px;
     color: #0075B1;
+    margin-left: 30px;
 }
 .b2-detailed{
     text-decoration: none;
