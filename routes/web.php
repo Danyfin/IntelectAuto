@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BasketController;
 
 Route::get('/', function () {
     $products = Product::all();
@@ -34,3 +35,11 @@ Route::get('/', function () {
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
+
+
+Route::get('/basket', [BasketController::class, 'index'])->name('basket.index');
+
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
+
+require __DIR__.'/auth.php';
