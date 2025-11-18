@@ -1,0 +1,52 @@
+.basket_title{
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+    height: 40px;
+    align-items: center;
+    margin-left: 40px;
+    margin-top: 50px;
+    gap: 5px;
+}
+
+.bt_text{
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.basket_title{
+    margin-left: 40px;
+}
+
+.count{
+    color: #929292;
+    font-size: 14px;
+}
+
+.basket_main{
+    display: flex;
+}
+.basket_items{
+    width: 940px;
+    height: 562px;
+    background-color: white;
+    margin-top: 50px;
+    margin-left: 40px;
+    margin-bottom: 50px;
+}
+
+.basket_payment{
+    width: 355px;
+    height: 401px;
+    background-color: white;
+    margin-top: 50px;
+    margin-left: 550px;
+    margin-right: 40px;
+}
+
+.basket_footer{
+    width: 100%;
+    height: 588px;
+    background-color: white;
+    margin-bottom: 50px;
+}
