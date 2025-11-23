@@ -11,10 +11,27 @@ class ProductController extends Controller
      * Display a listing of the products.
      */
 
-    public function index()
+   public function index()
     {
-        $products = Product::paginate(8);
-        return view('products.index', compact('products'));
+        $products = Product::all(); // Изменил на all() для клиентской фильтрации
+        
+        // Получаем уникальные категории
+        $categories = Product::distinct()
+            ->whereNotNull('catigories')
+            ->where('catigories', '!=', '')
+            ->pluck('catigories')
+            ->unique()
+            ->values();
+            
+        // Получаем уникальные бренды
+        $brands = Product::distinct()
+            ->whereNotNull('brend')
+            ->where('brend', '!=', '')
+            ->pluck('brend')
+            ->unique()
+            ->values();
+
+        return view('products.index', compact('products', 'categories', 'brands'));
     }
 
     /**
@@ -42,9 +59,9 @@ class ProductController extends Controller
         $validated = $request->validate([
             'article' => 'required|string|max:255',
             'name' => 'required|string|max:255',
-            'brand' => 'required|string|max:255',
-            'category' => 'required|string|max:255',
-            'our_price' => 'required|numeric',
+            'brend' => 'required|string|max:255',
+            'catigories' => 'required|string|max:255',
+            'price_rrc' => 'required|numeric',
         ]);
 
         Product::create($validated);

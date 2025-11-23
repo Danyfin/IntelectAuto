@@ -93,83 +93,45 @@
                     </div>
                     <div class="price-slider">
                         <div class="progress" id="price-progress"></div>
-                        <input type="range" min="0" max="10000" value="0" class="range-min" id="range-min">
-                        <input type="range" min="0" max="10000" value="10000" class="range-max" id="range-max">
+                        <input type="range" min="0" max="170000" value="0" class="range-min" id="range-min">
+                        <input type="range" min="0" max="170000" value="170000" class="range-max" id="range-max">
                     </div>
                     <div class="price-inputs">
                         <input type="number" class="price-input" placeholder="от 0" id="min-price">
-                        <input type="number" class="price-input" placeholder="до 10000" id="max-price">
+                        <input type="number" class="price-input" placeholder="до 170000" id="max-price">
                     </div>
                 </div>
 
+                <!-- Категории -->
                 <div class="filter-section">
                     <div class="filter__subtitle">
-                        <p>Производитель</p>
+                        <p>Категории</p>
                         <img class="plus" src="/images/Vector.svg" alt="">
                     </div>
+                    @foreach($categories as $category)
                     <div class="filter-item">
-                        <input type="checkbox" class="filter-checkbox" id="manufacturer-bmw1">
-                        <label for="manufacturer-bmw1" class="filter-label">
-                            <span class="grey">BMW</span>
-                            <span class="grey">от 1300 р</span>
+                        <input type="checkbox" class="filter-checkbox" id="category-{{ $loop->index }}" name="categories[]" value="{{ $category }}">
+                        <label for="category-{{ $loop->index }}" class="filter-label">
+                            <span class="grey">{{ $category }}</span>
                         </label>
                     </div>
-                    <div class="filter-item">
-                        <input type="checkbox" class="filter-checkbox" id="manufacturer-bmw2">
-                        <label for="manufacturer-bmw2" class="filter-label">
-                            <span class="grey">BMW</span>
-                            <span class="grey">от 1300 р</span>
-                        </label>
-                    </div>
+                    @endforeach
                 </div>
 
+                <!-- Бренды -->
                 <div class="filter-section">
                     <div class="filter__subtitle">
                         <p>Бренд</p>
                         <img class="plus" src="/images/Vector.svg" alt="">
                     </div>
+                    @foreach($brands as $brand)
                     <div class="filter-item">
-                        <input type="checkbox" class="filter-checkbox" id="brand-bmw1">
-                        <label for="brand-bmw1" class="filter-label">
-                            <span class="grey">LAVR</span>
-                            <span class="grey">от 1300 р</span>
+                        <input type="checkbox" class="filter-checkbox" id="brand-{{ $loop->index }}" name="brands[]" value="{{ $brand }}">
+                        <label for="brand-{{ $loop->index }}" class="filter-label">
+                            <span class="grey">{{ $brand }}</span>
                         </label>
                     </div>
-                    <div class="filter-item">
-                        <input type="checkbox" class="filter-checkbox" id="brand-bmw2">
-                        <label for="brand-bmw2" class="filter-label">
-                            <span class="grey">bi bi care</span>
-                            <span class="grey">от 1300 р</span>
-                        </label>
-                    </div>
-                    <div class="filter-item">
-                        <input type="checkbox" class="filter-checkbox" id="brand-bmw2">
-                        <label for="brand-bmw2" class="filter-label">
-                            <span class="grey">GEOMETRIA</span>
-                            <span class="grey">от 1300 р</span>
-                        </label>
-                    </div>
-                    <div class="filter-item">
-                        <input type="checkbox" class="filter-checkbox" id="brand-bmw2">
-                        <label for="brand-bmw2" class="filter-label">
-                            <span class="grey">LAVR for home</span>
-                            <span class="grey">от 1300 р</span>
-                        </label>
-                    </div>
-                    <div class="filter-item">
-                        <input type="checkbox" class="filter-checkbox" id="brand-bmw2">
-                        <label for="brand-bmw2" class="filter-label">
-                            <span class="grey">LAVR motoline</span>
-                            <span class="grey">от 1300 р</span>
-                        </label>
-                    </div>
-                    <div class="filter-item">
-                        <input type="checkbox" class="filter-checkbox" id="brand-bmw2">
-                        <label for="brand-bmw2" class="filter-label">
-                            <span class="grey">LAVR HUNT</span>
-                            <span class="grey">от 1300 р</span>
-                        </label>
-                    </div>
+                    @endforeach
                 </div>
             </div>
 
@@ -186,7 +148,7 @@
 
                         <div class="priceAndBasket">
                             <div class="Price">
-                                <div class="NewPrice">908.00 ₽</div>
+                                <div class="NewPrice">{{ $product->price_rrc }}</div>
                                 <div class="OldPrice">15 000 ₽</div>
                             </div>
                             <button>Купить</button>
@@ -316,7 +278,7 @@
                     
                     // Проверяем границы
                     if (value < 0) value = 0;
-                    if (value > 10000) value = 10000;
+                    if (value > 170000) value = 170000;
                     
                     this.value = value;
                     rangeMin.value = value;
@@ -331,7 +293,7 @@
                     
                     // Проверяем границы
                     if (value < 0) value = 0;
-                    if (value > 10000) value = 10000;
+                    if (value > 170000) value = 170000;
                     
                     this.value = value;
                     rangeMax.value = value;
@@ -343,7 +305,7 @@
             priceMin.addEventListener('blur', function() {
                 let value = parseInt(this.value) || 0;
                 if (value < 0) value = 0;
-                if (value > 10000) value = 10000;
+                if (value > 170000) value = 170000;
                 this.value = value;
                 rangeMin.value = value;
                 updatePriceSlider();
@@ -352,7 +314,7 @@
             priceMax.addEventListener('blur', function() {
                 let value = parseInt(this.value) || 0;
                 if (value < 0) value = 0;
-                if (value > 10000) value = 10000;
+                if (value > 170000) value = 170000;
                 this.value = value;
                 rangeMax.value = value;
                 updatePriceSlider();
