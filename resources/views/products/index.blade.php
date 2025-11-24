@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite(['resources/css/app.css', 'resources/css/head_foot.css', 'resources/js/app.js'])
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
@@ -138,25 +138,32 @@
             <!-- Карточки товаров -->
             <div class="cards-wrapper">
                 @foreach ($products as $product)
-                   
+                    @php
+                        // Разделяем название по первой запятой
+                        $nameParts = explode(',', $product->name, 2);
+                        $mainName = trim($nameParts[0]);
+                        $description = isset($nameParts[1]) ? trim($nameParts[1]) : 'пласт. (уп. по 50 шт)';
+                    @endphp
+                
                     <div class="card">
                         <div class="foto">
                             <!-- Здесь должно быть изображение товара -->
                         </div>
-                        <h3 class="description">{{ $product->name }}</h3>
-                        <p class="description1">пласт. (уп. по 50 шт)</p>
+                        <h3 class="description">{{ $mainName }}</h3>
+                        <p class="description1">{{ $description }}</p>
 
                         <div class="priceAndBasket">
                             <div class="Price">
-                                <div class="NewPrice">{{ $product->price_rrc }}</div>
+                                <div class="NewPrice">{{ number_format($product->price_rrc, 0, '', ' ') }} ₽</div>
                                 <div class="OldPrice">15 000 ₽</div>
                             </div>
                             <button>Купить</button>
                         </div>
                     </div>
-                    
-                 
                 @endforeach
+            </div>
+            <div class="pagination-container">
+                {{ $products->links() }}
             </div>
         </div>  
     </div>

@@ -3,7 +3,7 @@
     margin: 0;
 }
 
-.main-inside{
+.main-inside {
     display: flex;
     flex-direction: column;
     margin: 0 auto;
@@ -17,223 +17,257 @@
     flex-direction: column;
     padding: 0 40px;
     box-sizing: border-box;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
 }
-.obert{
-   display: flex;
-   background-color: #FFFFFF; 
+.obert {
+    display: flex;
+    background-color: #ffffff;
 }
 /*Главная*/
 
-.main-car{
+.main-car {
     padding-left: 40px;
     padding-top: 82px;
     height: 734px;
     background: url(/public/images/car.svg) no-repeat center;
     background-size: cover;
 }
-.text-1{
+.text-1 {
     font-size: 72px;
-    color: #FFFFFF;
+    color: #ffffff;
 }
-.text-2{
+.text-2 {
     font-size: 16px;
-    color: #FFFFFF;
+    color: #ffffff;
     line-height: 20px;
     font-family: "Inter", sans-serif;
 }
-.top-text{
+.top-text {
     max-width: 822px;
 }
-.top-down{
+.top-down {
     max-width: 618px;
     margin-top: 20px;
 }
-.button-main{
+.button-main {
     width: 239px;
     height: 48px;
-    background-color: #0075B1;
+    background-color: #0075b1;
     border-radius: 6px;
     border: none;
-    gap:10px;
+    gap: 10px;
     cursor: pointer;
-    color: #FFFFFF;
+    color: #ffffff;
     font-size: 18px;
     font-family: "Inter", sans-serif;
 }
-.top-button{
+.top-button {
     margin-top: 50px;
 }
 
 .info-block {
-  
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  max-width: 1440px;
-  margin: 0 auto;
-  gap: 20px;
-  padding: 20px;
-  background-color: #f9f9f9; 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: 1440px;
+    margin: 0 auto;
+    gap: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
 }
 
 .block {
-  display: flex;
-  flex-direction: column;
-  width: 300px; 
-  padding: 15px;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    padding: 15px;
 }
 
 .text-up {
-  font-weight: bold;
-  font-size: 1.2em;
-  color: #313131;
-  margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #313131;
+    margin-bottom: 10px;
 }
 
 .text-down {
-  font-size: 0.95em;
-  color: #707070;
+    font-size: 0.95em;
+    color: #707070;
 }
 
-.img-info-block{
-  width: 30px; 
-  height: auto;
+.img-info-block {
+    width: 30px;
+    height: auto;
 }
-.stocks-inside{
+.stocks-inside {
     max-width: 1360px;
     margin: 0 auto;
 }
-.stocks{
-    background: #FFFFFF;
-  
+.stocks {
+    background: #ffffff;
+    padding-bottom: 40px;
 }
-.blocks{
+.blocks {
     display: flex;
     justify-content: center;
     gap: 10px;
     max-height: 667px;
     height: 100%;
 }
-.block-double{
+.block-double {
     gap: 10px;
 }
-.theme{
+.theme {
     margin-bottom: 24px;
-    
+    padding-top: 58px;
 }
 /*block*/
-.block1{
+.block1 {
     width: 667px;
     height: 380px;
-    background-color: #F1F1F1;
-    
+    background-color: #f1f1f1;
 }
-.block2{
+.block2 {
     width: 240px;
     height: 380px;
-    background-color: #F1F1F1;
+    background-color: #f1f1f1;
     display: flex;
 }
 
-.block3{
+.block3 {
     width: 433px;
     height: 185px;
-    background-color: #0075B1;
+    background-color: #0075b1;
 }
-.block4{
+.block4 {
     width: 433px;
     height: 185px;
-    background-color: #F1F1F1;
+    background-color: #f1f1f1;
     margin-top: 10px;
 }
 /*block*/
 
-.b1-info{
+.b1-info {
     display: flex;
 }
-.b3-block{
+.b3-block {
     display: flex;
 }
-.b1-button{
+.b1-button {
     margin-top: 119px;
 }
 
-.b1-percent{
+.b1-percent {
     margin-top: 40px;
+    margin-left: 60px;
     font-size: 96px;
-    color: #0075B1;
+    color: #0075b1;
 }
 
+.b2-description {
+    margin-top: 30px;
+    margin-left: 20px;
+}
+.b2-img {
+    margin-left: 5px;
+}
+.b2-button {
+    margin-top: 10px;
+    margin-left: 25px;
+}
+.b2-img-block {
+    margin-top: 53px;
+}
 /*up*/
-.b1-description-up{
+.b1-description-up {
     margin-top: 61px;
     font-size: 14px;
     color: #707070;
 }
-.b2-description-up{
+.b2-description-up {
     font-size: 14px;
     color: #707070;
 }
-.b3-description-up{
+.b3-description-up {
     font-size: 14px;
     color: #ffffff;
 }
-.b4-description-up{
+.b4-description-up {
     font-size: 14px;
     color: #707070;
 }
 /*up*/
 
-
-/*down*/
-.b1-description-down{
-    font-size: 24px;
-    color: #313131;
+.b1-description {
+    width: 300px;
 }
-.b2-description-down{
-    font-size: 24px;
-    color: #313131;
-}
-.b3-description-down{
-    font-size: 24px;
-    color: #ffffff;
-}
-.b4-description-down{
-    font-size: 24px;
-    color: #313131;
-}
-/*down*/
-
-/*detailed*/
-.b1-detailed{
-    text-decoration: none;
-    font-size: 14px;
-    color: #0075B1;
+.b1-inside {
     margin-left: 30px;
 }
-.b2-detailed{
+
+.b3-info {
+    margin: 20px;
+}
+.b3-button {
+    margin-top: 30px;
+}
+.b3-block-img {
+    margin-top: 57px;
+}
+/*down*/
+.b1-description-down {
+    margin-top: 10px;
+    font-size: 24px;
+    color: #313131;
+}
+.b2-description-down {
+    margin-top: 10px;
+    font-size: 24px;
+    color: #313131;
+}
+.b3-description-down {
+    margin-top: 10px;
+    font-size: 24px;
+    color: #ffffff;
+}
+.b4-description-down {
+    font-size: 24px;
+    color: #313131;
+}
+.b4-description {
+    text-align: end;
+}
+/*down*/
+
+/*detailed*/
+.b1-detailed {
     text-decoration: none;
     font-size: 14px;
-    color: #0075B1;
+    color: #0075b1;
 }
-.b3-detailed{
+.b2-detailed {
+    padding: 0;
+    text-decoration: none;
+    font-size: 14px;
+    color: #0075b1;
+}
+.b3-detailed {
     text-decoration: none;
     font-size: 14px;
     color: #ffffff;
 }
-.b4-detailed{
+.b4-detailed {
     text-decoration: none;
     font-size: 14px;
-    color: #0075B1;
+    color: #0075b1;
 }
 /*detailed*/
 
-.p-block1{
+.p-block1 {
     display: flex;
     justify-content: space-between;
 }
-.p-block2{
+.p-block2 {
     background-color: #313131;
     margin-left: auto;
     margin-right: auto;
@@ -241,7 +275,7 @@
     height: 398px;
 }
 
-.forms{
+.forms {
     margin-top: 40px;
     background-color: #313131;
     width: 1360px;
@@ -249,65 +283,65 @@
     margin-left: auto;
     margin-right: auto;
 }
-.f1-info{
+.f1-info {
     text-align: center;
     padding-top: 30px;
 }
-.f2-info{
+.f2-info {
     margin-top: 35px;
     display: flex;
     justify-content: space-around;
 }
-.f1-description-up{
-    color: #FFFFFF;
+.f1-description-up {
+    color: #ffffff;
     font-size: 24px;
 }
-.f1-description-down{
-    color: #FFFFFF;
+.f1-description-down {
+    color: #ffffff;
     font-size: 14px;
 }
 /* Обертка для выпадающего списка */
 
 /* Кнопка */
 .dropbtn {
-  background-color: #ffffff;
-  color: rgb(0, 0, 0);
-  padding: 10px 20px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
 }
 
 /* Контент списка */
 .dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  z-index: 1;
-  margin-top: 2px;
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    z-index: 1;
+    margin-top: 2px;
 }
 
 /* Ссылки внутри списка */
 .dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
 }
 
 /* Изменение цвета при наведении */
 .dropdown-content a:hover {
-  background-color: #ddd;
+    background-color: #ddd;
 }
 
 /* Показывать список при наведении на контейнер */
 .dropdown:hover .dropdown-content {
-  display: block;
+    display: block;
 }
-.dropdown{
+.dropdown {
     margin-left: 6px;
 }
-.drop-img{
+.drop-img {
     margin-left: 91px;
 }

@@ -12,8 +12,9 @@ class ProductController extends Controller
      */
 
    public function index()
-    {
-        $products = Product::all(); // Изменил на all() для клиентской фильтрации
+    { 
+        // Пагинация
+        $products = Product::paginate(12);
         
         // Получаем уникальные категории
         $categories = Product::distinct()
