@@ -167,6 +167,7 @@
     display: flex;
     align-items: center;
     width: 545px;
+    height: 34px;
     border: 1px solid #F1F1F1;
     border-radius: 8px;
     background-color: #fff;
@@ -190,8 +191,11 @@
 .search input::placeholder {
     color: #999;
 }
-/*КОНЕЦ ШАПКИ*/
 
+.search-mob {
+    display: none;
+}
+/*КОНЕЦ ШАПКИ*/
 
 
 /*ФУТЕР*/
@@ -270,7 +274,9 @@
 .vpz{
     display: none;
 }
-
+.foto-mob{
+        display: none;
+    }
 /*КОНЕЦ ФУТЕРА*/
 
 /* Медиа-запрос для экранов до 1100px */
@@ -283,7 +289,12 @@
     padding-right: 50px;
     }
 }
+
 @media (max-width: 920px) {
+    .foto-mob{
+        cursor: pointer;
+        display: block;
+    }
     .Headbottom{
         display: none;
     }
@@ -350,6 +361,47 @@
         text-decoration: none; 
         color: #707070;
     }
+    .search-mob {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-right: 12px;
+    height: 34px;
+    border: 1px solid #F1F1F1;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.all-mob{
+    display: flex;
+    justify-content: space-between;
+    height: 36px;
+    margin-bottom: 20px;
+}
+
+
+.search-mob img {
+    width: 36px;
+    height: 36px;
+    margin-left: 4px;
+    opacity: 0.6;
+}
+
+.search-mob input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 16px;
+    background: transparent;
+}
+
+.search-mob input::placeholder {
+    color: #999;
+}
+.foto-mob img{
+    cursor: pointer;
+}
 }
 
 @media (max-width: 412px){
@@ -359,4 +411,5 @@
         margin-top: 64px;
         margin-bottom: 24px;
     }
+    
 }
