@@ -84,9 +84,9 @@
     <!-- ШАПКА КОНЕЦ -->
 
      <div class="main">
-        
             <div class="main-car">
-                <div class="top-text">
+                <div class="top">
+                    <div class="top-text">
                     <h2 class="text-1">Запчасти для коммерческой техники и спецтехники</h2>
                 </div>
                 <div class="top-down">
@@ -95,15 +95,14 @@
                 <div class="top-button">
                     <input class="button-main" type="submit" value="Стать клиентом">
                 </div>
+                </div>
             </div>
-     
         <div class="info-block">
             <div class="block">
                 <div class="text-up">Широкий ассортимент</div>
                 <div class="text-down">Запчасти для европейских, российских и китайских марок: от двигателя до подвески.</div>
             </div>
             <img class="img-info-block" src="/images/line.svg" alt="">
-
              <div class="block">
                 <div class="text-up">Проверенные поставщики</div>
                 <div class="text-down">Оригинал и надежные аналоги от ведущих брендов.</div>
@@ -129,7 +128,7 @@
         </div>
         <div class="stocks">
             <div class="stocks-inside">
-            <div class="theme"><h1>Акции и скидки</h1></div>
+            <div class="theme"><h3>Акции и скидки</h3></div>
             <div class="blocks">
                 <div class="block1">
                     <div class="b1-inside">
@@ -219,38 +218,28 @@
             <div class="f2-info">
                 <form class="f2-info" action="">
                    <div class="dropdown">
-                        <button class="dropbtn">Услуги<img class="drop-img"  src="/images/Vector1.svg" alt=""></button>
-                        <div class="dropdown-content">
-                                <a href="#">Услуга 1</a>
-                                <a href="#">Услуга 2</a>
-                                <a href="#">Услуга 3</a>
-                        </div>
+                        <button class="dropbtn">Услуги <img class="drop-img" src="/images/Vector1.svg" alt=""></button>
                     </div>
                     <div class="dropdown">
-                        <button class="dropbtn">Марка<img class="drop-img" src="/images/Vector1.svg" alt=""></button>
-                        <div class="dropdown-content">
-                                <a href="#">Марка</a>
-                                <a href="#">Марка</a>
-                                <a href="#">Марка</a>
-                        </div>
+                        <button class="dropbtn">Марка <img class="drop-img" src="/images/Vector1.svg" alt=""></button>
                     </div>
                     <div class="dropdown">
-                        <button class="dropbtn">Дата и время<img class="drop-img"  src="/images/Vector1.svg" alt=""></button>
-                        <div class="dropdown-content">
-                                <a href="#">Дата и время</a>
-                                <a href="#">Дата и время</a>
-                                <a href="#">Дата и время</a>
-                        </div>
+                        <button class="dropbtn">Дата и время <img class="drop-img" src="/images/Vector1.svg" alt=""></button>
                     </div>
                     <div class="dropdown">
-                        <button class="dropbtn">Филиал<img class="drop-img"  src="/images/Vector1.svg" alt=""></button>
-                        <div class="dropdown-content">
-                                <a href="#">Филиал</a>
-                                <a href="#">Филиал</a>
-                                <a href="#">Филиал</a>
-                        </div>
+                        <button class="dropbtn">Филиал <img class="drop-img" src="/images/Vector1.svg" alt=""></button>
+                    </div>
+                    <div class="dropdown2">
+                        <input type="text" class="dropbtn2" placeholder="E-mail">
+                    </div>
+                    <div class="dropdown2">
+                        <input type="text" class="dropbtn2" placeholder="Имя">
+                    </div>
+                    <div class="dropdown3">
+                        <button class="dropbtn3">Отправить</button>
                     </div>
                 </form>
+                
             </div>
         </div>
         <div class="news">
@@ -262,10 +251,32 @@
                         <img src="/images/arrowR.svg" alt="">
                     </div>
                 </div>
+                <div class="news-blocks">
+                    <div class="new-block">
+                        <div class="new-img"><img src="/images/new-img1.png" alt=""></div>
+                        <div class="new-info">
+                            <div class="new-info-up"> Новая поставка оригинальных запчастей</div>
+                            <div class="new-info-down">Мы обновили склад — в наличии новые позиции. Быстрая отгрузка и гарантия качества на все детали.</div>
+                        </div>
+                    </div>
+                    <div class="new-block">
+                        <div class="new-img"><img src="/images/new-img2.png" alt=""></div>
+                        <div class="new-info">
+                            <div class="new-info-up"> Теперь доставка в день заказа!</div>
+                            <div class="new-info-down">Для клиентов из Челябинска и области — экспресс-доставка автозапчастей прямо в ваш сервис или на стоянку.</div>
+                        </div>
+                    </div>
+                    <div class="new-block">
+                        <div class="new-img"><img src="/images/new-img1.png" alt=""></div>
+                        <div class="new-info">
+                            <div class="new-info-up"> Теперь доставка в день заказа!</div>
+                            <div class="new-info-down">Для клиентов из Челябинска и области — экспресс-доставка автозапчастей прямо в ваш сервис или на стоянку.</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
         <!-- ФУТЕР НАЧАЛО -->
      <div class="obert">
         <footer class="main-header_footer1">
