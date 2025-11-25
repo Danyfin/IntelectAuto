@@ -4,9 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Laravel\Scout\Searchable;
 
 class Product extends Model
 {
+    use Searchable;
+
     protected $table = "products";
     
     /**
@@ -59,7 +62,59 @@ class Product extends Model
     ];
 
     /**
+     * Searchable configuration
+     */
+    public function toSearchableArray()
+    {
+        return [
+            'name' => $this->name,
+            'article' => $this->article,
+            'brend' => $this->brend,
+            'catigories' => $this->catigories,
+            'description' => $this->description,
+        ];
+    }
+
+    public function shouldBeSearchable()
+    {
+        // Индексируем только товары, которые не удалены и имеют название
+        return !is_null($this->name) && trim($this->name) !== '';
+    }
+
+    /**
      * Accessors & Mutators
      */
     
+    /**
+     * Get the price_rrc attribute (alias for RRC)
+     */
+    protected function priceRrc(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->RRC,
+        );
+    }
+
+    /**
+     * Get formatted price
+     */
+    public function getFormattedPriceAttribute()
+    {
+        return number_format($this->RRC, 0, '', ' ');
+    }
+
+    /**
+     * Get main name and description from name field
+     */
+    public function getNamePartsAttribute()
+    {
+        $nameParts = explode(',', $this->name, 2);
+        $mainName = trim($nameParts[0]);
+        $description = isset($nameParts[1]) ? trim($nameParts[1]) : ($this->packaging ?? 'пласт. (уп. по 50 шт)');
+        
+        return [
+            'main_name' => $mainName,
+            'description' => $description
+        ];
+    }
 }
