@@ -82,6 +82,15 @@
         <div class="tools-info"> <!-- Навигация -->
             <a href="">Главная</a> / <a href="">Каталог товаров</a>
             <h2>Каталог товаров</h2>
+            <div class="all-mob">
+                <div class="search-mob">
+                    <img src="/images/search.svg" alt="search">
+                    <input type="text" placeholder="Поиск">
+                </div>
+                <div class="foto-mob">
+                    <img src="/images/button-mob.svg" alt="search">
+                </div>
+            </div>
         </div>
         <div class="toolsANDcard">
             <!-- Боковая панель фильтров -->
@@ -136,7 +145,8 @@
             </div>
 
             <!-- Карточки товаров -->
-            <div class="cards-wrapper">
+             <div class="card-pag-wrapper">
+                            <div class="cards-wrapper">
                 @foreach ($products as $product)
                     @php
                         // Разделяем название по первой запятой
@@ -165,6 +175,7 @@
             <div class="pagination-container">
                 {{ $products->links() }}
             </div>
+             </div>
         </div>  
     </div>
 

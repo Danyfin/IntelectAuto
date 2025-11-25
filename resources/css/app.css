@@ -61,6 +61,7 @@ body {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
+    align-content: center;
 }
 
 .cards-row {
@@ -98,7 +99,6 @@ body {
     font-size: 12px;
     font-weight: 400;
     line-height: 16px;
-    flex-grow: 1;
     color: #929292;
 }
 
