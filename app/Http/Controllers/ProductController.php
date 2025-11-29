@@ -48,8 +48,9 @@ class ProductController extends Controller
             ->pluck('brend')
             ->unique()
             ->values();
-
-        // ПЕРЕДАЧА ДАННЫХ В ШАБЛОН
+            
+            // ПЕРЕДАЧА ДАННЫХ В ШАБЛОН
+           
         return view('products.index', compact('products', 'categories', 'brands', 'search'));
     }
 

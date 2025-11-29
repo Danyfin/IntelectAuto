@@ -157,14 +157,14 @@
                 
                     <div class="card">
                         <div class="foto">
-                            <!-- Здесь должно быть изображение товара -->
+                            <img class="aspect-square object-cover" src="{{ $product->photo1 }}" alt="">
                         </div>
                         <h3 class="description">{{ $mainName }}</h3>
                         <p class="description1">{{ $description }}</p>
 
                         <div class="priceAndBasket">
                             <div class="Price">
-                                <div class="NewPrice">{{ number_format($product->price_rrc, 0, '', ' ') }} ₽</div>
+                                <div class="NewPrice">{{ number_format($product->price_rrc, 0, '.', ',') }} ₽</div>
                                 <div class="OldPrice">15 000 ₽</div>
                             </div>
                             <button>Купить</button>
