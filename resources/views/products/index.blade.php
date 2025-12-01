@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite(['resources/css/app.css', 'resources/css/head_foot.css', 'resources/js/app.js'])
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
+
 <body>
-    <!-- ШАПКА НАЧАЛО -->
+     <!-- ШАПКА НАЧАЛО -->
      <div class="obert">
         <header class="main-header_footer">
         <div class="Headtop"> <!-- верняя часть -->
@@ -119,7 +122,7 @@
                     </div>
                     @foreach($categories as $category)
                     <div class="filter-item">
-                        <input type="checkbox" class="filter-checkbox" id="category-{{ $loop->index }}" name="categories[]" value="{{ $category }}">
+                        <input type="checkbox" class="filter-checkbox category-filter" id="category-{{ $loop->index }}" name="categories[]" value="{{ $category }}">
                         <label for="category-{{ $loop->index }}" class="filter-label">
                             <span class="grey">{{ $category }}</span>
                         </label>
@@ -135,7 +138,7 @@
                     </div>
                     @foreach($brands as $brand)
                     <div class="filter-item">
-                        <input type="checkbox" class="filter-checkbox" id="brand-{{ $loop->index }}" name="brands[]" value="{{ $brand }}">
+                        <input type="checkbox" class="filter-checkbox brand-filter" id="brand-{{ $loop->index }}" name="brands[]" value="{{ $brand }}">
                         <label for="brand-{{ $loop->index }}" class="filter-label">
                             <span class="grey">{{ $brand }}</span>
                         </label>
@@ -145,42 +148,19 @@
             </div>
 
             <!-- Карточки товаров -->
-             <div class="card-pag-wrapper">
-                            <div class="cards-wrapper">
-                @foreach ($products as $product)
-                    @php
-                        // Разделяем название по первой запятой
-                        $nameParts = explode(',', $product->name, 2);
-                        $mainName = trim($nameParts[0]);
-                        $description = isset($nameParts[1]) ? trim($nameParts[1]) : 'пласт. (уп. по 50 шт)';
-                    @endphp
-                
-                    <div class="card">
-                        <div class="foto">
-                            <img class="aspect-square object-cover" src="{{ $product->photo1 }}" alt="">
-                        </div>
-                        <h3 class="description">{{ $mainName }}</h3>
-                        <p class="description1">{{ $description }}</p>
-
-                        <div class="priceAndBasket">
-                            <div class="Price">
-                                <div class="NewPrice">{{ number_format($product->price_rrc, 0, '.', ',') }} ₽</div>
-                                <div class="OldPrice">15 000 ₽</div>
-                            </div>
-                            <button>Купить</button>
-                        </div>
-                    </div>
-                @endforeach
+            <div class="card-pag-wrapper">
+                <div id="products-container" class="cards-wrapper">
+                    @include('products_partial', ['products' => $products])
+                </div>
+                <div id="pagination-container" class="pagination-container">
+                    {{ $products->links() }}
+                </div>
             </div>
-            <div class="pagination-container">
-                {{ $products->links() }}
-            </div>
-             </div>
-        </div>  
+        </div>
     </div>
 
     <!-- ФУТЕР НАЧАЛО -->
-     <div class="obert">
+    <div class="obert">
         <footer class="main-header_footer1">
             <div class="leftfot">
                 <div class="fotofot">
@@ -212,7 +192,7 @@
                         <li><a href="#">Реквизиты</a></li>
                         <li><a href="#">Офферта</a></li>
                         <li><a href="#">Политика конфиденциальности</a></li>
-                    </ul> 
+                    </ul>
                 </div>
                 <div class="info3fot">
                     <p>Контакты</p>
@@ -225,122 +205,203 @@
                 </div>
             </div>
         </footer>
-     </div>
+    </div>
     <!-- ФУТЕР КОНЕЦ -->
 
+
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-            // Город
-            const cityOptions = document.querySelectorAll('.city-option');
-            const selectedCity = document.querySelector('.selected-city span');
-            
-            cityOptions.forEach(option => {
-                option.addEventListener('click', function() {
-                    const city = this.getAttribute('data-city');
-                    selectedCity.textContent = city;
-                    
-                    localStorage.setItem('selectedCity', city);
-                });
-            });
-            
-            const savedCity = localStorage.getItem('selectedCity');
-            if (savedCity) {
-                selectedCity.textContent = savedCity;
-            }
-
-            // Фильтр цены
-            const rangeMin = document.getElementById('range-min');
-            const rangeMax = document.getElementById('range-max');
-            const priceMin = document.getElementById('min-price');
-            const priceMax = document.getElementById('max-price');
-            const progress = document.getElementById('price-progress');
-
-            function updatePriceSlider() {
-                const minVal = parseInt(rangeMin.value);
-                const maxVal = parseInt(rangeMax.value);
-                
-                // Проверяем, чтобы минимальное значение не было больше максимального
-                if (minVal > maxVal) {
-                    rangeMin.value = maxVal;
-                    priceMin.value = maxVal;
-                }
-                
-                // Проверяем, чтобы максимальное значение не было меньше минимального
-                if (maxVal < minVal) {
-                    rangeMax.value = minVal;
-                    priceMax.value = minVal;
-                }
-                
-                // Обновляем поля ввода
-                priceMin.value = rangeMin.value;
-                priceMax.value = rangeMax.value;
-                
-                // Обновляем прогресс-бар (синюю полосу)
-                const minPercent = (minVal / rangeMin.max) * 100;
-                const maxPercent = 100 - (maxVal / rangeMax.max) * 100;
-                
-                progress.style.left = minPercent + "%";
-                progress.style.right = maxPercent + "%";
-            }
-
-            // Обработчики для ползунков
-            rangeMin.addEventListener('input', updatePriceSlider);
-            rangeMax.addEventListener('input', updatePriceSlider);
-
-            // Обработчики для полей ввода с задержкой (чтобы не обновлять на каждый символ)
-            let timeout;
-            priceMin.addEventListener('input', function() {
-                clearTimeout(timeout);
-                timeout = setTimeout(() => {
-                    let value = parseInt(this.value) || 0;
-                    
-                    // Проверяем границы
-                    if (value < 0) value = 0;
-                    if (value > 170000) value = 170000;
-                    
-                    this.value = value;
-                    rangeMin.value = value;
-                    updatePriceSlider();
-                }, 500);
-            });
-
-            priceMax.addEventListener('input', function() {
-                clearTimeout(timeout);
-                timeout = setTimeout(() => {
-                    let value = parseInt(this.value) || 0;
-                    
-                    // Проверяем границы
-                    if (value < 0) value = 0;
-                    if (value > 170000) value = 170000;
-                    
-                    this.value = value;
-                    rangeMax.value = value;
-                    updatePriceSlider();
-                }, 500);
-            });
-
-            // Обработчики для потери фокуса (мгновенное обновление)
-            priceMin.addEventListener('blur', function() {
-                let value = parseInt(this.value) || 0;
-                if (value < 0) value = 0;
-                if (value > 170000) value = 170000;
-                this.value = value;
-                rangeMin.value = value;
-                updatePriceSlider();
-            });
-
-            priceMax.addEventListener('blur', function() {
-                let value = parseInt(this.value) || 0;
-                if (value < 0) value = 0;
-                if (value > 170000) value = 170000;
-                this.value = value;
-                rangeMax.value = value;
-                updatePriceSlider();
-            });
-
-            // Инициализация слайдера
-            updatePriceSlider();
+document.addEventListener('DOMContentLoaded', function() {
+    // Город
+    const cityOptions = document.querySelectorAll('.city-option');
+    const selectedCity = document.querySelector('.selected-city span');
+    
+    cityOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            const city = this.getAttribute('data-city');
+            selectedCity.textContent = city;
+            localStorage.setItem('selectedCity', city);
         });
+    });
+    
+    const savedCity = localStorage.getItem('selectedCity');
+    if (savedCity) {
+        selectedCity.textContent = savedCity;
+    }
+
+    // Фильтр цены
+    const rangeMin = document.getElementById('range-min');
+    const rangeMax = document.getElementById('range-max');
+    const priceMin = document.getElementById('min-price');
+    const priceMax = document.getElementById('max-price');
+    const progress = document.getElementById('price-progress');
+
+    function updatePriceSlider() {
+        const minVal = parseInt(rangeMin.value);
+        const maxVal = parseInt(rangeMax.value);
+        
+        if (minVal > maxVal) {
+            rangeMin.value = maxVal;
+            priceMin.value = maxVal;
+        }
+        
+        if (maxVal < minVal) {
+            rangeMax.value = minVal;
+            priceMax.value = minVal;
+        }
+        
+        priceMin.value = rangeMin.value;
+        priceMax.value = rangeMax.value;
+        
+        const minPercent = (minVal / rangeMin.max) * 100;
+        const maxPercent = 100 - (maxVal / rangeMax.max) * 100;
+        
+        progress.style.left = minPercent + "%";
+        progress.style.right = maxPercent + "%";
+    }
+
+    // Обработчики для ползунков
+    rangeMin.addEventListener('input', updatePriceSlider);
+    rangeMax.addEventListener('input', updatePriceSlider);
+
+    // Обработчики для полей ввода
+    let timeout;
+    priceMin.addEventListener('input', function() {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+            let value = parseInt(this.value) || 0;
+            if (value < 0) value = 0;
+            if (value > 170000) value = 170000;
+            this.value = value;
+            rangeMin.value = value;
+            updatePriceSlider();
+        }, 500);
+    });
+
+    priceMax.addEventListener('input', function() {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+            let value = parseInt(this.value) || 0;
+            if (value < 0) value = 0;
+            if (value > 170000) value = 170000;
+            this.value = value;
+            rangeMax.value = value;
+            updatePriceSlider();
+        }, 500);
+    });
+
+    // Инициализация слайдера
+    updatePriceSlider();
+
+    // Функционал фильтрации
+    const productsContainer = document.getElementById('products-container');
+    const paginationContainer = document.getElementById('pagination-container');
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    
+    // Проверка наличия элементов
+    if (!productsContainer || !paginationContainer) {
+        console.error('Не найдены элементы для фильтрации');
+        return;
+    }
+
+    // Функция сбора данных фильтров
+    function getFilterData() {
+        const minPrice = document.getElementById('min-price').value || 0;
+        const maxPrice = document.getElementById('max-price').value || 170000;
+        
+        const selectedCategories = [];
+        document.querySelectorAll('.category-filter:checked').forEach(checkbox => {
+            selectedCategories.push(checkbox.value);
+        });
+        
+        const selectedBrands = [];
+        document.querySelectorAll('.brand-filter:checked').forEach(checkbox => {
+            selectedBrands.push(checkbox.value);
+        });
+
+        return {
+            min_price: minPrice,
+            max_price: maxPrice,
+            categories: selectedCategories,
+            brands: selectedBrands
+        };
+    }
+
+    // Функция применения фильтров
+    function applyFilters() {
+        const filterData = getFilterData();
+        
+        console.log('Applying filters:', filterData);
+        
+        // Показываем индикатор загрузки только для товаров
+        productsContainer.innerHTML = '<div class="loading">Загрузка...</div>';
+        
+        // Отправляем AJAX запрос
+        fetch('/products/filter', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'X-CSRF-TOKEN': csrfToken
+            },
+            body: JSON.stringify(filterData)
+        })
+        .then(response => {
+            console.log('Response status:', response.status);
+            if (!response.ok) {
+                return response.json().then(err => {
+                    throw new Error(err.error || `HTTP error! status: ${response.status}`);
+                });
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Response data:', data);
+            if (data.error) {
+                throw new Error(data.error);
+            }
+            // Обновляем и товары, и пагинацию
+            productsContainer.innerHTML = data.products_html || '<div class="error">Нет данных о товарах</div>';
+            paginationContainer.innerHTML = data.pagination_html || '';
+        })
+        .catch(error => {
+            console.error('Filter error:', error);
+            productsContainer.innerHTML = '<div class="error">Ошибка: ' + error.message + '</div>';
+        });
+    }
+
+    // Дебаунс функция для предотвращения частых запросов
+    let debounceTimer;
+    function debounceApplyFilters(delay = 500) {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(applyFilters, delay);
+    }
+
+    // Автоматическое применение фильтров при изменении чекбоксов
+    document.querySelectorAll('.filter-checkbox').forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            debounceApplyFilters(300);
+        });
+    });
+
+    // Автоматическое применение фильтров при изменении цены
+    rangeMin.addEventListener('change', function() {
+        debounceApplyFilters(800);
+    });
+    
+    rangeMax.addEventListener('change', function() {
+        debounceApplyFilters(800);
+    });
+    
+    priceMin.addEventListener('change', function() {
+        debounceApplyFilters(800);
+    });
+    
+    priceMax.addEventListener('change', function() {
+        debounceApplyFilters(800);
+    });
+});
 </script>
+
 </body>
+
 </html>

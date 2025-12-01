@@ -42,4 +42,15 @@ Route::get('/basket', [BasketController::class, 'index'])->name('basket.index');
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
 
+Route::post('/products/filter', [ProductController::class, 'filter'])->name('products.filter');
+// Добавьте этот маршрут в routes/web.php
+Route::get('/debug-product-fields', function() {
+    $product = \App\Models\Product::first();
+    if ($product) {
+        // Показываем все поля первой записи
+        dd($product->toArray());
+    }
+    return 'No products found';
+});
+
 require __DIR__.'/auth.php';
