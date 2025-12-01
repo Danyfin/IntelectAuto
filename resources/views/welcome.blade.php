@@ -153,7 +153,7 @@
                                 <div class="b2-description-down">Бесплатная доставка при заказе от 10 000 ₽</div>
                             </div>
                             <div class="b2-img-block">
-                                <img class="b2-img" src="/images/screw.svg" alt="">
+                                <img class="b2-img2" src="/images/screw.svg" alt="">
                             </div>
                         </div>
                         <div class="b2-button">
@@ -176,7 +176,7 @@
                                 </div>
                             </div>
                             <div class="b3-block-img">
-                                <img src="/images/tire.svg" alt="" class="b3-img">
+                                <img src="/images/tire.svg" alt="" class="b3-img1">
                             </div>
                         </div>
                     </div>

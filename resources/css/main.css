@@ -96,24 +96,20 @@
     width: 30px;
     height: auto;
 }
-.stocks-inside {
-    max-width: 1360px;
-    margin: 0 auto;
-}
+
+/* Секция Акций и скидок */
 .stocks {
     background: #ffffff;
     padding-bottom: 40px;
 }
-.blocks {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    max-height: 667px;
-    height: 100%;
+
+.stocks-inside {
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: 0 40px;
+    box-sizing: border-box;
 }
-.block-double {
-    gap: 10px;
-}
+
 .theme {
     font-size: 24px;
     margin-bottom: 24px;
@@ -122,149 +118,250 @@
 
 .theme h3{
     font-weight: 500;
+    margin: 0;
 }
-/*block*/
+
+.blocks {
+    display: flex;
+    gap: 10px;
+}
+
+.block-double {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Блоки */
 .block1 {
     width: 667px;
     height: 380px;
     background-color: #f1f1f1;
+    border-radius: 6px;
 }
+
 .block2 {
     width: 240px;
     height: 380px;
     background-color: #f1f1f1;
+    border-radius: 6px;
     display: flex;
+    flex-direction: column;
 }
 
 .block3 {
     width: 433px;
     height: 185px;
     background-color: #0075b1;
+    border-radius: 6px;
 }
+
 .block4 {
     width: 433px;
     height: 185px;
     background-color: #f1f1f1;
-    margin-top: 10px;
+    border-radius: 6px;
 }
-/*block*/
+
+/* Блок 1 */
+.b1-inside {
+    margin: 30px;
+    height: calc(100% - 60px);
+    display: flex;
+    flex-direction: column;
+}
 
 .b1-info {
     display: flex;
+    justify-content: space-between;
+    flex: 1;
 }
-.b3-block {
-    display: flex;
-}
-.b1-button {
-    margin-top: 119px;
-}
-
-.b1-percent {
-    margin-top: 40px;
-    margin-left: 60px;
-    font-size: 96px;
-    color: #0075b1;
-}
-
-.b2-description {
-    margin-top: 30px;
-    margin-left: 20px;
-}
-.b2-img {
-    margin-left: 5px;
-}
-.b2-button {
-    margin-top: 10px;
-    margin-left: 25px;
-}
-.b2-img-block {
-    margin-top: 53px;
-}
-/*up*/
-.b1-description-up {
-    margin-top: 61px;
-    font-size: 14px;
-    color: #707070;
-}
-.b2-description-up {
-    font-size: 14px;
-    color: #707070;
-}
-.b3-description-up {
-    font-size: 14px;
-    color: #ffffff;
-}
-.b4-description-up {
-    font-size: 14px;
-    color: #707070;
-}
-/*up*/
 
 .b1-description {
     width: 300px;
 }
-.b1-inside {
-    margin-left: 30px;
+
+.b1-description-up {
+    font-size: 14px;
+    color: #707070;
+    margin-bottom: 10px;
 }
 
-.b3-info {
-    margin: 20px;
-}
-.b3-button {
-    margin-top: 30px;
-}
-.b3-block-img {
-    margin-top: 57px;
-}
-/*down*/
 .b1-description-down {
-    margin-top: 10px;
     font-size: 24px;
     color: #313131;
+    line-height: 1.2;
 }
-.b2-description-down {
-    margin-top: 10px;
-    font-size: 24px;
-    color: #313131;
-}
-.b3-description-down {
-    margin-top: 10px;
-    font-size: 24px;
-    color: #ffffff;
-}
-.b4-description-down {
-    font-size: 24px;
-    color: #313131;
-}
-.b4-description {
-    text-align: end;
-}
-/*down*/
 
-/*detailed*/
+.b1-percent {
+    font-size: 96px;
+    color: #0075b1;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.b1-button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 .b1-detailed {
     text-decoration: none;
     font-size: 14px;
     color: #0075b1;
 }
+
+/* Блок 2 */
+.b2-inside {
+    margin: 20px;
+    height: calc(100% - 40px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.b2-description {
+    display: flex;
+    flex-direction: column;
+}
+
+.b2-text {
+    flex: 1;
+}
+
+.b2-description-up {
+    font-size: 14px;
+    color: #707070;
+    margin-bottom: 10px;
+}
+
+.b2-description-down {
+    font-size: 24px;
+    color: #313131;
+    line-height: 1.2;
+}
+
+.b2-img-block {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.b2-img {
+    max-width: 100%;
+    height: auto;
+}
+
+.b2-button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 .b2-detailed {
-    padding: 0;
     text-decoration: none;
     font-size: 14px;
     color: #0075b1;
 }
+
+/* Блок 3 */
+.b3-block {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.b3-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.b3-description-up {
+    font-size: 14px;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.b3-description-down {
+    font-size: 24px;
+    color: #ffffff;
+    line-height: 1.2;
+}
+
+.b3-button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 20px;
+}
+
 .b3-detailed {
     text-decoration: none;
     font-size: 14px;
     color: #ffffff;
 }
+
+.b3-block-img {
+    display: flex;
+    align-items: flex-end;
+    margin-top: 20px;
+}
+
+.b3-img {
+    width: 211px;
+    height: 185px;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Блок 4 */
+.b4-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 20px;
+}
+
+.b4-description-up {
+    font-size: 14px;
+    color: #707070;
+    margin-bottom: 10px;
+    text-align: right;
+}
+
+.b4-description-down {
+    font-size: 24px;
+    color: #313131;
+    line-height: 1.2;
+    text-align: right;
+}
+
+.b4-button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
 .b4-detailed {
     text-decoration: none;
     font-size: 14px;
     color: #0075b1;
 }
-/*detailed*/
 
+/* Общие стили для стрелок */
+.b1-img, .b2-img, .b3-img, .b4-img {
+    width: 20px;
+    height: 20px;
+}
+
+
+/* Остальные стили */
 .p-block1 {
     display: flex;
     justify-content: space-between;
@@ -302,7 +399,6 @@
     color: #ffffff;
     font-size: 14px;
 }
-/* Обертка для выпадающего списка */
 
 /* Кнопка */
 .dropbtn {
@@ -351,15 +447,6 @@
 }
 
 .news-blocks{
-
-}
-
-.new-img{
-    width: 72px;
-    height: 71px;
-}
-
-.news-blocks{
     display: flex;
     max-width: 100%;
     margin-left: auto;
@@ -378,4 +465,13 @@
 }
 .new-info-down{
     font-size: 12px;
+}
+.new-img{
+    width: 72px;
+    height: 71px;
+}
+.p-text{
+    font-size: 24px;
+    margin-bottom: 24px;
+    padding-top: 58px;
 }
