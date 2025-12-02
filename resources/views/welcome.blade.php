@@ -200,86 +200,201 @@
                 </div>
             </div>
         </div>
-        <div class="popular">
-            <div class="p-block1">
-                <div class="p-text">
-                    <h2>Популярные товары</h2>
-                </div>
-                <div class="arrows">
-                    <img src="/images/arrowL.svg" alt="">
-                    <img src="/images/line2.svg" alt="">
-                    <img src="/images/arrowR.svg" alt="">
-                </div>
-            </div>
-
-            <div class="p-block2">
-                @if(isset($products) && $products->count() > 0)
-                @foreach($products->take(4) as $product) <!-- ОГРАНИЧЕНИЕ 4 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        @if($product->image && file_exists(public_path('storage/' . $product->image)))
-                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
-                        @else
-                        <img src="/images/no-image.jpg" alt="Нет изображения">
-                        @endif
-
-                        @if($product->discount && $product->discount > 0)
-                        <div class="product-discount">-{{ $product->discount }}%</div>
-                        @endif
-                    </div>
-
-                    <div class="product-info">
-                        <h3 class="product-title">{{ $product->name }}</h3>
-
-                        <div class="product-price">
-                            @if($product->discount && $product->discount > 0)
-                            @php
-                            $discountedPrice = $product->price * (1 - $product->discount / 100);
-                            @endphp
-                            <span class="current-price">{{ number_format($discountedPrice, 0, '', ' ') }} ₽</span>
-                            @if($product->price)
-                            <span class="old-price">{{ number_format($product->price, 0, '', ' ') }} ₽</span>
-                            @endif
-                            @else
-                            <span class="current-price">{{ number_format($product->price, 0, '', ' ') }} ₽</span>
-                            @endif
-                        </div>
-
-                        <button class="add-to-cart" data-product-id="{{ $product->id }}">
-                            В корзину
-                        </button>
-                    </div>
-                </div>
-                @endforeach
-
-                <!-- Если товаров меньше 4, добавляем пустые карточки для выравнивания -->
-                @if($products->count() < 4)
-                    @for($i=$products->count(); $i < 4; $i++)
-                        <div class="product-card empty-card">
-                        <div class="product-image">
-                            <img src="/images/no-image.jpg" alt="Товар скоро появится">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Товар скоро появится</h3>
-                            <div class="product-price">
-                                <span class="current-price">0 ₽</span>
-                            </div>
-                            <button class="add-to-cart disabled">Нет в наличии</button>
-                        </div>
-            </div>
-            @endfor
-            @endif
-            @else
-            <!-- Если товаров нет вообще -->
-            <div class="no-products-message">
-                <p>Популярные товары скоро появятся</p>
-            </div>
-            @endif
+ <div class="popular">
+    <div class="m-[50px] flex justify-between items-center">
+        <div class="">
+            <h2 class="text-3xl">Популярные товары</h2>
+        </div>
+        <div class="flex gap-2">
+            <button class="carousel-prev p-2 hover:bg-gray-100 rounded transition">
+                <img src="/images/arrowL.svg" alt="Предыдущий">
+            </button>
+            <img src="/images/line2.svg" alt="">
+            <button class="carousel-next p-2 hover:bg-gray-100 rounded transition">
+                <img src="/images/arrowR.svg" alt="Следующий">
+            </button>
         </div>
     </div>
+    
+    <div class="relative overflow-hidden">
+        <div class="cards-wrapper flex transition-transform duration-500 ease-in-out">
+            @php
+                // Получаем первые 5 товаров
+                $displayProducts = $products->take(5);
+            @endphp
+            
+            {{-- Дублируем товары для бесконечной прокрутки --}}
+            @for($j = 0; $j < 3; $j++) {{-- 3 копии для плавной прокрутки --}}
+                @foreach($displayProducts as $product)
+                    @php
+                        $nameParts = explode(',', $product->name, 2);
+                        $mainName = trim($nameParts[0]);
+                        $description = isset($nameParts[1]) ? trim($nameParts[1]) : 'пласт. (уп. по 50 шт)';
+                    @endphp
+                    <div class="card carousel-item flex-shrink-0">
+                        <div class="foto mb-3">
+                            <img class="w-[250px] h-[252px] object-cover" src="{{ $product->photo1 }}" alt="">
+                        </div>
+                        <h3 class="description text-sm font-medium mb-1 line-clamp-2 h-10">{{ $mainName }}</h3>
+                        <p class="description1 text-xs text-gray-600 mb-4 h-6 overflow-hidden">{{ $description }}</p>
+                        
+                        <div class="priceAndBasket flex justify-between items-center">
+                            <div class="Price">
+                                <div class="NewPrice text-lg font-bold">{{ number_format($product->price_rrc, 0, '.', ',') }} ₽</div>
+                                <div class="OldPrice text-sm text-gray-400 line-through">15 000 ₽</div>
+                            </div>
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700 transition">
+                                Купить
+                            </button>
+                        </div>
+                    </div>
+                @endforeach
+            @endfor
+        </div>
     </div>
-    <div class="forms">
-        <div class="f1-info">
+</div>
+
+<style>
+.cards-wrapper {
+    display: flex;
+    width: 300%; /* 3 копии по 100% */
+    padding-left: 50px;
+    padding-right: 50px;
+    gap: 24px; /* Увеличили расстояние между карточками до 24px */
+}
+.carousel-item {
+    flex: 0 0 auto;
+    width: 250px; /* Фиксированная ширина карточки */
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    background: white;
+    box-sizing: border-box;
+}
+
+/* Убираем лишние отступы */
+.p-block2 {
+    margin: 0;
+    padding: 0;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+    .cards-wrapper {
+        padding-left: 20px;
+        padding-right: 20px;
+        gap: 16px;
+    }
+    
+    .carousel-item {
+        width: 200px; /* Уменьшаем на мобильных */
+    }
+    
+    .carousel-item .foto img {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+/* Для планшетов */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .cards-wrapper {
+        padding-left: 30px;
+        padding-right: 30px;
+        gap: 20px;
+    }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const carousel = document.querySelector('.cards-wrapper');
+    const prevButton = document.querySelector('.carousel-prev');
+    const nextButton = document.querySelector('.carousel-next');
+    
+    // Количество оригинальных товаров (5)
+    const originalItemsCount = 5;
+    // Ширина карточки + gap (250px + 24px)
+    const cardWidth = 274;
+    // Сколько карточек показывать за раз
+    let visibleCards = 5;
+    // Общая ширина для одного блока
+    let blockWidth = visibleCards * cardWidth;
+    let currentBlock = 0;
+    
+    // Изначально показываем вторую копию (середина)
+    let currentPosition = -blockWidth;
+    updateCarousel();
+    
+    function updateCarousel() {
+        carousel.style.transform = `translateX(${currentPosition}px)`;
+        
+        // Скрываем кнопки на время анимации
+        prevButton.style.pointerEvents = 'none';
+        nextButton.style.pointerEvents = 'none';
+        
+        setTimeout(() => {
+            prevButton.style.pointerEvents = 'auto';
+            nextButton.style.pointerEvents = 'auto';
+        }, 500);
+    }
+    
+    function jumpToBlock(blockIndex) {
+        currentPosition = -blockIndex * blockWidth;
+        updateCarousel();
+    }
+    
+    function updateVisibleCards() {
+        const containerWidth = document.querySelector('.popular').offsetWidth;
+        // Рассчитываем сколько карточек поместится
+        if (containerWidth <= 768) {
+            visibleCards = 2;
+        } else if (containerWidth <= 1024) {
+            visibleCards = 3; 
+        } else {
+            visibleCards = 5; 
+        }
+ 
+        blockWidth = visibleCards * cardWidth;
+      
+        jumpToBlock(1); 
+    }
+    
+    prevButton.addEventListener('click', () => {
+        currentBlock--;
+
+        currentPosition += blockWidth;
+        updateCarousel();
+        
+        setTimeout(() => {
+            if (currentBlock < 0) {
+                currentBlock = 1;
+                jumpToBlock(currentBlock);
+            }
+        }, 500);
+    });
+    
+    nextButton.addEventListener('click', () => {
+        currentBlock++;
+        currentPosition -= blockWidth;
+        updateCarousel();
+        setTimeout(() => {
+            if (currentBlock > 2) { 
+                currentBlock = 1; 
+                jumpToBlock(currentBlock);
+            }
+        }, 500);
+    });
+    
+    updateVisibleCards();
+    window.addEventListener('resize', updateVisibleCards);
+  
+    window.addEventListener('load', updateVisibleCards);
+});
+</script>
+    <div class="forms ">
+        <div class="">
+            <div class="f1-info">
             <div class="f1-description-up">Работайте с техникой — работайте с профессионалами</div>
             <div class="f1-description-down">Оставьте заявку или позвоните нам — наши специалисты быстро подберут запчасти под ваш транспорт.</div>
         </div>
@@ -298,10 +413,10 @@
                     <button class="dropbtn">Филиал <img class="drop-img" src="/images/Vector1.svg" alt=""></button>
                 </div>
                 <div class="dropdown2">
-                    <input type="text" class="dropbtn2" placeholder="E-mail">
+                    <input class="w-[176px] h-[36px]" type="text" class="dropbtn2" placeholder="E-mail">
                 </div>
                 <div class="dropdown2">
-                    <input type="text" class="dropbtn2" placeholder="Имя">
+                    <input class="w-[176px] h-[36px]" type="text" class="dropbtn2" placeholder="Имя">
                 </div>
                 <div class="dropdown3">
                     <button class="dropbtn3">Отправить</button>
@@ -309,21 +424,27 @@
             </form>
 
         </div>
+        </div>
+        
     </div>
     <div class="news">
-        <div class="p-block1">
-            <div class="p-text">
-                <h2>Новости</h2>
-            </div>
-            <div class="arrows">
-                <img src="/images/arrowL.svg" alt="">
-                <img src="/images/line2.svg" alt="">
-                <img src="/images/arrowR.svg" alt="">
-            </div>
+        <div class="m-[50px] flex justify-between items-center">
+        <div class="">
+            <h2 class="text-3xl">Популярные товары</h2>
         </div>
+        <div class="flex gap-2">
+            <button class="carousel-prev p-2 hover:bg-gray-100 rounded transition">
+                <img src="/images/arrowL.svg" alt="Предыдущий">
+            </button>
+            <img src="/images/line2.svg" alt="">
+            <button class="carousel-next p-2 hover:bg-gray-100 rounded transition">
+                <img src="/images/arrowR.svg" alt="Следующий">
+            </button>
+        </div>
+    </div>
         <div class="news-blocks">
             <div class="new-block">
-                <div class="new-img"><img src="/images/new-img1.png" alt=""></div>
+                <div class="new-img mr-3"><img src="/images/new-img1.png" alt=""></div>
                 <div class="new-info">
                     <div class="new-info-up"> Новая поставка оригинальных запчастей</div>
                     <div class="new-info-down">Мы обновили склад — в наличии новые позиции. Быстрая отгрузка и гарантия качества на все детали.</div>
