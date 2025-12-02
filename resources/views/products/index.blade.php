@@ -14,71 +14,71 @@
 </head>
 
 <body>
-     <!-- ШАПКА НАЧАЛО -->
-     <div class="obert">
+    <!-- ШАПКА НАЧАЛО -->
+    <div class="obert">
         <header class="main-header_footer">
-        <div class="Headtop"> <!-- верняя часть -->
-            <div class="top1">
-            <p>Ваш город:</p>
-                <div class="city-selector">
-                    <div class="selected-city">
-                        <span>Челябинск</span>
-                        <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
-                            <path d="M1 1L5 5L9 1" stroke="#929292" stroke-width="1.5"/>
-                        </svg>
+            <div class="Headtop"> <!-- верняя часть -->
+                <div class="top1">
+                    <p>Ваш город:</p>
+                    <div class="city-selector">
+                        <div class="selected-city">
+                            <span>Челябинск</span>
+                            <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+                                <path d="M1 1L5 5L9 1" stroke="#929292" stroke-width="1.5" />
+                            </svg>
+                        </div>
+                        <div class="cities-dropdown">
+                            <div class="city-option" data-city="Челябинск">Челябинск</div>
+                            <div class="city-option" data-city="Москва">Москва</div>
+                            <div class="city-option" data-city="Санкт-Петербург">Санкт-Петербург</div>
+                            <div class="city-option" data-city="Екатеринбург">Екатеринбург</div>
+                            <div class="city-option" data-city="Новосибирск">Новосибирск</div>
+                        </div>
                     </div>
-                    <div class="cities-dropdown">
-                        <div class="city-option" data-city="Челябинск">Челябинск</div>
-                        <div class="city-option" data-city="Москва">Москва</div>
-                        <div class="city-option" data-city="Санкт-Петербург">Санкт-Петербург</div>
-                        <div class="city-option" data-city="Екатеринбург">Екатеринбург</div>
-                        <div class="city-option" data-city="Новосибирск">Новосибирск</div>
+                </div>
+                <div class="top2">
+                    <ul>
+                        <li><a href="">Акции</a></li>
+                        <li><a href="">О компании</a></li>
+                        <li><a href="">Доставка</a></li>
+                        <li><a href="">Адреса</a></li>
+                        <li><a href="">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="top3">
+                    <a href="tel:89000000000">8 (900) 000 00 00</a>
+                </div>
+            </div>
+            <div class="line"></div>
+            <div class="Headbottom"> <!-- нижняя -->
+                <div class="bottom1">
+                    <a href="/">
+                        <img src="/images/logo.svg" alt="Logo">
+                    </a>
+                </div>
+                <div class="bottom2">
+                    <div class="catalog">
+                        <button>
+                            <img src="/images/toolbar.svg" alt="toolbar">
+                            Каталог
+                        </button>
+                    </div>
+                    <div class="search">
+                        <img src="/images/search.svg" alt="search">
+                        <input type="text" placeholder="Поиск">
                     </div>
                 </div>
             </div>
-            <div class="top2">
-                <ul>
-                    <li><a href="">Акции</a></li>
-                    <li><a href="">О компании</a></li>
-                    <li><a href="">Доставка</a></li>
-                    <li><a href="">Адреса</a></li>
-                    <li><a href="">Контакты</a></li>
-                </ul>
-            </div>
-            <div class="top3">
-                <a href="tel:89000000000">8 (900) 000 00 00</a>
-            </div>
-        </div>
-        <div class="line"></div>
-        <div class="Headbottom"> <!-- нижняя -->
-            <div class="bottom1">
+            <div class="max-920-header">
                 <a href="/">
                     <img src="/images/logo.svg" alt="Logo">
                 </a>
-            </div>
-            <div class="bottom2">
-                <div class="catalog">
-                    <button>
-                        <img src="/images/toolbar.svg" alt="toolbar">
-                        Каталог
-                    </button>    
-                </div> 
-                <div class="search">
-                    <img src="/images/search.svg" alt="search">
-                    <input type="text" placeholder="Поиск">
+                <div class="bm">
+                    <img src="/images/bm.svg" alt="menu">
                 </div>
             </div>
-        </div>
-        <div class="max-920-header">
-            <a href="/">
-                <img src="/images/logo.svg" alt="Logo">
-            </a>
-            <div class="bm">
-                <img src="/images/bm.svg" alt="menu">
-            </div>
-        </div>
         </header>
-     </div>
+    </div>
     <!-- ШАПКА КОНЕЦ -->
 
     <div class="container">
@@ -210,197 +210,198 @@
 
 
     <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Город
-    const cityOptions = document.querySelectorAll('.city-option');
-    const selectedCity = document.querySelector('.selected-city span');
-    
-    cityOptions.forEach(option => {
-        option.addEventListener('click', function() {
-            const city = this.getAttribute('data-city');
-            selectedCity.textContent = city;
-            localStorage.setItem('selectedCity', city);
-        });
-    });
-    
-    const savedCity = localStorage.getItem('selectedCity');
-    if (savedCity) {
-        selectedCity.textContent = savedCity;
-    }
+        document.addEventListener('DOMContentLoaded', function() {
+            // Город
+            const cityOptions = document.querySelectorAll('.city-option');
+            const selectedCity = document.querySelector('.selected-city span');
 
-    // Фильтр цены
-    const rangeMin = document.getElementById('range-min');
-    const rangeMax = document.getElementById('range-max');
-    const priceMin = document.getElementById('min-price');
-    const priceMax = document.getElementById('max-price');
-    const progress = document.getElementById('price-progress');
-
-    function updatePriceSlider() {
-        const minVal = parseInt(rangeMin.value);
-        const maxVal = parseInt(rangeMax.value);
-        
-        if (minVal > maxVal) {
-            rangeMin.value = maxVal;
-            priceMin.value = maxVal;
-        }
-        
-        if (maxVal < minVal) {
-            rangeMax.value = minVal;
-            priceMax.value = minVal;
-        }
-        
-        priceMin.value = rangeMin.value;
-        priceMax.value = rangeMax.value;
-        
-        const minPercent = (minVal / rangeMin.max) * 100;
-        const maxPercent = 100 - (maxVal / rangeMax.max) * 100;
-        
-        progress.style.left = minPercent + "%";
-        progress.style.right = maxPercent + "%";
-    }
-
-    // Обработчики для ползунков
-    rangeMin.addEventListener('input', updatePriceSlider);
-    rangeMax.addEventListener('input', updatePriceSlider);
-
-    // Обработчики для полей ввода
-    let timeout;
-    priceMin.addEventListener('input', function() {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => {
-            let value = parseInt(this.value) || 0;
-            if (value < 0) value = 0;
-            if (value > 170000) value = 170000;
-            this.value = value;
-            rangeMin.value = value;
-            updatePriceSlider();
-        }, 500);
-    });
-
-    priceMax.addEventListener('input', function() {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => {
-            let value = parseInt(this.value) || 0;
-            if (value < 0) value = 0;
-            if (value > 170000) value = 170000;
-            this.value = value;
-            rangeMax.value = value;
-            updatePriceSlider();
-        }, 500);
-    });
-
-    // Инициализация слайдера
-    updatePriceSlider();
-
-    // Функционал фильтрации
-    const productsContainer = document.getElementById('products-container');
-    const paginationContainer = document.getElementById('pagination-container');
-    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-    
-    // Проверка наличия элементов
-    if (!productsContainer || !paginationContainer) {
-        console.error('Не найдены элементы для фильтрации');
-        return;
-    }
-
-    // Функция сбора данных фильтров
-    function getFilterData() {
-        const minPrice = document.getElementById('min-price').value || 0;
-        const maxPrice = document.getElementById('max-price').value || 170000;
-        
-        const selectedCategories = [];
-        document.querySelectorAll('.category-filter:checked').forEach(checkbox => {
-            selectedCategories.push(checkbox.value);
-        });
-        
-        const selectedBrands = [];
-        document.querySelectorAll('.brand-filter:checked').forEach(checkbox => {
-            selectedBrands.push(checkbox.value);
-        });
-
-        return {
-            min_price: minPrice,
-            max_price: maxPrice,
-            categories: selectedCategories,
-            brands: selectedBrands
-        };
-    }
-
-    // Функция применения фильтров
-    function applyFilters() {
-        const filterData = getFilterData();
-        
-        console.log('Applying filters:', filterData);
-        
-        // Показываем индикатор загрузки только для товаров
-        productsContainer.innerHTML = '<div class="loading">Загрузка...</div>';
-        
-        // Отправляем AJAX запрос
-        fetch('/products/filter', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-                'X-CSRF-TOKEN': csrfToken
-            },
-            body: JSON.stringify(filterData)
-        })
-        .then(response => {
-            console.log('Response status:', response.status);
-            if (!response.ok) {
-                return response.json().then(err => {
-                    throw new Error(err.error || `HTTP error! status: ${response.status}`);
+            cityOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const city = this.getAttribute('data-city');
+                    selectedCity.textContent = city;
+                    localStorage.setItem('selectedCity', city);
                 });
+            });
+
+            const savedCity = localStorage.getItem('selectedCity');
+            if (savedCity) {
+                selectedCity.textContent = savedCity;
             }
-            return response.json();
-        })
-        .then(data => {
-            console.log('Response data:', data);
-            if (data.error) {
-                throw new Error(data.error);
+
+            // Фильтр цены
+            const rangeMin = document.getElementById('range-min');
+            const rangeMax = document.getElementById('range-max');
+            const priceMin = document.getElementById('min-price');
+            const priceMax = document.getElementById('max-price');
+            const progress = document.getElementById('price-progress');
+
+            function updatePriceSlider() {
+                const minVal = parseInt(rangeMin.value);
+                const maxVal = parseInt(rangeMax.value);
+
+                if (minVal > maxVal) {
+                    rangeMin.value = maxVal;
+                    priceMin.value = maxVal;
+                }
+
+                if (maxVal < minVal) {
+                    rangeMax.value = minVal;
+                    priceMax.value = minVal;
+                }
+
+                priceMin.value = rangeMin.value;
+                priceMax.value = rangeMax.value;
+
+                const minPercent = (minVal / rangeMin.max) * 100;
+                const maxPercent = 100 - (maxVal / rangeMax.max) * 100;
+
+                progress.style.left = minPercent + "%";
+                progress.style.right = maxPercent + "%";
             }
-            // Обновляем и товары, и пагинацию
-            productsContainer.innerHTML = data.products_html || '<div class="error">Нет данных о товарах</div>';
-            paginationContainer.innerHTML = data.pagination_html || '';
-        })
-        .catch(error => {
-            console.error('Filter error:', error);
-            productsContainer.innerHTML = '<div class="error">Ошибка: ' + error.message + '</div>';
+
+            // Обработчики для ползунков
+            rangeMin.addEventListener('input', updatePriceSlider);
+            rangeMax.addEventListener('input', updatePriceSlider);
+
+            // Обработчики для полей ввода
+            let timeout;
+            priceMin.addEventListener('input', function() {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => {
+                    let value = parseInt(this.value) || 0;
+                    if (value < 0) value = 0;
+                    if (value > 170000) value = 170000;
+                    this.value = value;
+                    rangeMin.value = value;
+                    updatePriceSlider();
+                }, 500);
+            });
+
+            priceMax.addEventListener('input', function() {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => {
+                    let value = parseInt(this.value) || 0;
+                    if (value < 0) value = 0;
+                    if (value > 170000) value = 170000;
+                    this.value = value;
+                    rangeMax.value = value;
+                    updatePriceSlider();
+                }, 500);
+            });
+
+            // Инициализация слайдера
+            updatePriceSlider();
+
+            // Функционал фильтрации
+            const productsContainer = document.getElementById('products-container');
+            const paginationContainer = document.getElementById('pagination-container');
+            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+            // Проверка наличия элементов
+            if (!productsContainer || !paginationContainer) {
+                console.error('Не найдены элементы для фильтрации');
+                return;
+            }
+
+            // Функция сбора данных фильтров
+            function getFilterData() {
+                const minPrice = document.getElementById('min-price').value || 0;
+                const maxPrice = document.getElementById('max-price').value || 170000;
+
+                const selectedCategories = [];
+                document.querySelectorAll('.category-filter:checked').forEach(checkbox => {
+                    selectedCategories.push(checkbox.value);
+                });
+
+                const selectedBrands = [];
+                document.querySelectorAll('.brand-filter:checked').forEach(checkbox => {
+                    selectedBrands.push(checkbox.value);
+                });
+
+                return {
+                    min_price: minPrice,
+                    max_price: maxPrice,
+                    categories: selectedCategories,
+                    brands: selectedBrands
+                };
+            }
+
+            // Функция применения фильтров
+            function applyFilters() {
+                const filterData = getFilterData();
+
+                console.log('Applying filters:', filterData);
+
+                // Показываем индикатор загрузки только для товаров
+                productsContainer.innerHTML = '<div class="loading">Загрузка...</div>';
+
+                // Отправляем AJAX запрос
+                fetch('/products/filter', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json',
+                            'X-CSRF-TOKEN': csrfToken
+                        },
+                        body: JSON.stringify(filterData)
+                    })
+                    .then(response => {
+                        console.log('Response status:', response.status);
+                        if (!response.ok) {
+                            return response.json().then(err => {
+                                throw new Error(err.error || `HTTP error! status: ${response.status}`);
+                            });
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('Response data:', data);
+                        if (data.error) {
+                            throw new Error(data.error);
+                        }
+                        // Обновляем и товары, и пагинацию
+                        productsContainer.innerHTML = data.products_html || '<div class="error">Нет данных о товарах</div>';
+                        paginationContainer.innerHTML = data.pagination_html || '';
+                    })
+                    .catch(error => {
+                        console.error('Filter error:', error);
+                        productsContainer.innerHTML = '<div class="error">Ошибка: ' + error.message + '</div>';
+                    });
+            }
+
+            // Дебаунс функция для предотвращения частых запросов
+            let debounceTimer;
+
+            function debounceApplyFilters(delay = 500) {
+                clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(applyFilters, delay);
+            }
+
+            // Автоматическое применение фильтров при изменении чекбоксов
+            document.querySelectorAll('.filter-checkbox').forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    debounceApplyFilters(300);
+                });
+            });
+
+            // Автоматическое применение фильтров при изменении цены
+            rangeMin.addEventListener('change', function() {
+                debounceApplyFilters(800);
+            });
+
+            rangeMax.addEventListener('change', function() {
+                debounceApplyFilters(800);
+            });
+
+            priceMin.addEventListener('change', function() {
+                debounceApplyFilters(800);
+            });
+
+            priceMax.addEventListener('change', function() {
+                debounceApplyFilters(800);
+            });
         });
-    }
-
-    // Дебаунс функция для предотвращения частых запросов
-    let debounceTimer;
-    function debounceApplyFilters(delay = 500) {
-        clearTimeout(debounceTimer);
-        debounceTimer = setTimeout(applyFilters, delay);
-    }
-
-    // Автоматическое применение фильтров при изменении чекбоксов
-    document.querySelectorAll('.filter-checkbox').forEach(checkbox => {
-        checkbox.addEventListener('change', function() {
-            debounceApplyFilters(300);
-        });
-    });
-
-    // Автоматическое применение фильтров при изменении цены
-    rangeMin.addEventListener('change', function() {
-        debounceApplyFilters(800);
-    });
-    
-    rangeMax.addEventListener('change', function() {
-        debounceApplyFilters(800);
-    });
-    
-    priceMin.addEventListener('change', function() {
-        debounceApplyFilters(800);
-    });
-    
-    priceMax.addEventListener('change', function() {
-        debounceApplyFilters(800);
-    });
-});
-</script>
+    </script>
 
 </body>
 
